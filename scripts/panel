@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#panel_battery | bar -fp
+
+conky -c panel_conky | bar -pf
