@@ -6,8 +6,9 @@ help:
 all: openbox xinitrc 
 
 bar:
-	$(MAKE) -C ./bar/
-	mv ./bar/bar ~/bin/
+	#$(MAKE) -C ./bar/
+	#mv ./bar/bar ~/bin/
+	ln -fsn $(here)/scripts/panel $(HOME)/scripts/panel
 
 openbox:
 	mkdir -p $(HOME)/.config/openbox
