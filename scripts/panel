@@ -1,5 +1,10 @@
 #!/bin/bash
 
-#panel_battery | bar -fp
+killall bar
+killall trayer
 
-conky -c panel_conky | bar -pf
+conky -c ~/scripts/panel_conky | bar -p &
+
+sleep 1
+
+panel_trayer &

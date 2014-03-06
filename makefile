@@ -3,12 +3,14 @@ here := $(shell pwd)
 help:
 	@echo "Select a target"
 
-all: openbox xinitrc 
+all: bash openbox xinitrc 
 
 bar:
-	#$(MAKE) -C ./bar/
-	#mv ./bar/bar ~/bin/
 	ln -fsn $(here)/scripts/panel $(HOME)/scripts/panel
+	ln -fsn $(here)/scripts/panel_conky $(HOME)/scripts/panel_conky
+	ln -fsn $(here)/scripts/panel_battery $(HOME)/scripts/panel_battery
+	ln -fsn $(here)/scripts/panel_volume $(HOME)/scripts/panel_volume
+	ln -fsn $(here)/scripts/panel_trayer $(HOME)/scripts/panel_trayer
 
 bash:
 	ln -fsn $(here)/bashrc $(HOME)/.bashrc
