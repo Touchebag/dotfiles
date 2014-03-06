@@ -5,6 +5,9 @@ help:
 
 all: xinitrc
 
+bash:
+	ln -fsn $(here)/bashrc $(HOME)/.bashrc
+
 openbox:
 	ln -fsn $(here)/rc.xml $(HOME)/.config/openbox/rc.xml
 
