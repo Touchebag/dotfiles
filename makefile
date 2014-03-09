@@ -17,7 +17,8 @@ bash:
 
 openbox:
 	mkdir -p $(HOME)/.config/openbox
-	ln -fsn $(here)/rc.xml $(HOME)/.config/openbox/rc.xml
+	ln -fsn $(here)/openbox/rc.xml $(HOME)/.config/openbox/rc.xml
+	ln -fsn $(here)/openbox/autostart $(HOME)/.config/openbox/autostart
 
 xinitrc:
 	ln -fsn $(here)/xinitrc $(HOME)/.xinitrc

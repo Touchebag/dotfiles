@@ -1,14 +1,21 @@
-#tint2 &
+#Change keymap to US with åäö
 xbindkeys &
 setxkbmap usaswe
 
+#Set the font
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+#Add directories to path
 export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH
 
-panel
+#{{{Startup scripts
+##For bar/trayer
+panel &
+#}}}
 
+#Autostart home network for convenience
 sudo netctl start zyxel &
 
+#Start xserver
 exec openbox-session
