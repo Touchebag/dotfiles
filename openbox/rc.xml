@@ -739,7 +739,7 @@
   <applications>
      <application class="*"> <decor>no</decor> </application>
      <application name="gvim"> 
-        <fullscreen>true</fullscreen>
+        <maximized>true</maximized>
      </application>
 <!--
   # this is an example with comments through out. use these to make your
