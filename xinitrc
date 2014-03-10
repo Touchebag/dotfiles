@@ -6,6 +6,9 @@ setxkbmap usaswe
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+#Turn off power management
+xset -dpms
+
 #Add directories to path
 export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH
 
