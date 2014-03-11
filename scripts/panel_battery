@@ -56,6 +56,9 @@ case $BAT in
    100)
       bar="\f4$BAT"
       ;;
+   [0-10])
+      bar="\f1$BAT"
+      ;;
    [5-9]*)
       bar="\f4$BAT"
       ;;
