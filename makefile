@@ -15,6 +15,9 @@ bar:
 bash:
 	ln -fsn $(here)/bashrc $(HOME)/.bashrc
 
+keylayout:
+	ln -fsn $(here)/usaswe /usr/share/X11/xkb/symbols/usaswe
+
 openbox:
 	mkdir -p $(HOME)/.config/openbox
 	ln -fsn $(here)/openbox/rc.xml $(HOME)/.config/openbox/rc.xml
