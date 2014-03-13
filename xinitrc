@@ -21,4 +21,5 @@ panel &
 sudo netctl start zyxel &
 
 #Start xserver
+#exec xmonad
 exec openbox-session

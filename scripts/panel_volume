@@ -2,12 +2,12 @@
 
 VOL=`amixer get Master | awk 'FNR == 5 {print $4}' | tr -d '[]%'`
 
-icon=""
-if [[ $VOL -lt 1 ]]; then
-	icon=""
-else
-	icon=""
-fi
+#icon=""
+#if [[ $VOL -lt 1 ]]; then
+#	icon=""
+#else
+#	icon=""
+#fi
 
 bar=""
 case $VOL in
