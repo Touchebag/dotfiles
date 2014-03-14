@@ -3,7 +3,7 @@ here := $(shell pwd)
 help:
 	@echo "Select a target"
 
-all: bash openbox xinitrc 
+all: bar bash keylayout openbox xinitrc xmonad
 
 bar:
 	ln -fsn $(here)/scripts/panel $(HOME)/scripts/panel
@@ -26,4 +26,7 @@ openbox:
 xinitrc:
 	ln -fsn $(here)/xinitrc $(HOME)/.xinitrc
 
-.PHONY: bar openbox xinitrc 
+xmonad:
+	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
+
+.PHONY: bar bash keylayout openbox xinitrc xmonad
