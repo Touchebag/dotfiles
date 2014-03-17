@@ -3,7 +3,7 @@ here := $(shell pwd)
 help:
 	@echo "Select a target"
 
-all: bar bash keylayout openbox xbindkeys xinitrc xmonad
+all: bar bash openbox xbindkeys xinitrc xmonad
 
 bar:
 	ln -fsn $(here)/scripts/panel $(HOME)/scripts/panel
