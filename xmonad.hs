@@ -54,5 +54,7 @@ myKeyMaps = fromList $
    
    , ((myModKey, xK_q), kill)
    , ((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
+   , ((myModKey, xK_equal), sendMessage Expand)
+   , ((myModKey, xK_minus), sendMessage Shrink)
    ]
 --}}}
