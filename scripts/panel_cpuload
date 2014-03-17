@@ -3,5 +3,5 @@
 #echo -n $(uptime | sed 's/.*://; s/,//g')
 load=$(uptime | sed -e "s/.*load average: \(.*\...\), \(.*\...\), \(.*\...\)/\1/" -e "s/ //g")
 load=${load:2}
-load=$(($load/2))
+load=$((10#$load/2))
 echo -n "$load\%"
