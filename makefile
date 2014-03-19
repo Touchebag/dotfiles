@@ -27,7 +27,7 @@ scripts:
 	ln -fsn $(here)/scripts $(HOME)/scripts
 
 xbindkeys:
-	ln -fsn $(here)/xbindkeys $(HOME)/.xbindkeysrc
+	ln -fsn $(here)/xbindkeysrc $(HOME)/.xbindkeysrc
 
 xinitrc:
 	ln -fsn $(here)/xinitrc $(HOME)/.xinitrc

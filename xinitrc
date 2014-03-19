@@ -13,8 +13,11 @@ xset -dpms s off
 export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH
 
 #{{{Startup scripts
-##Background image
+#Background image
 sh ~/.fehbg
+
+#Hide mouse cursor
+unclutter &
 #}}}
 
 #Autostart home network for convenience

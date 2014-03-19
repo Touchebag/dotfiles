@@ -17,7 +17,7 @@ main = do
       , modMask            = myModKey
       , keys               = union myKeyMaps . keys defaultConfig
       , borderWidth        = myBorderWidth
-      , manageHook         = myManageHook
+      , manageHook         = myManageHook <+> manageDocks
       , layoutHook         = myLayoutHook
    }
 
@@ -31,7 +31,12 @@ myBorderWidth :: Dimension
 myBorderWidth = 1
 
 myManageHook :: ManageHook
-myManageHook = manageDocks
+myManageHook = composeAll
+   [ className =? "Skype"           --> doShift "3"
+   , className =? "Firefox"         --> doShift "1"
+
+   , className =? "Wine"            --> doFloat
+   ]
 
 winBorderFocused, winBorderNormal :: String
 winBorderFocused = "#ffffff"
