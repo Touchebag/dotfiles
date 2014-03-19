@@ -9,5 +9,10 @@ alias la='ls -A'
 alias ll='ls -lA'
 
 alias cd..='cd ..'
+
+alias gs='git status'
+alias gc='git commit -am'
+alias gpush='git push'
+alias gpull='git pull'
 #PS1='[\u@\h \W]\$ '
 PS1='[\W]\n \$ '

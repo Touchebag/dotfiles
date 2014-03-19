@@ -32,10 +32,10 @@ myBorderWidth = 1
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-   [ className =? "Skype"           --> doShift "3"
-   , className =? "Firefox"         --> doShift "1"
+   [ className =? "Skype"   --> doShift "3"
+   , className =? "Firefox" --> doShift "1"
 
-   , className =? "Wine"            --> doFloat
+   , className =? "Wine"    --> doFloat
    ]
 
 winBorderFocused, winBorderNormal :: String
