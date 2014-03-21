@@ -53,10 +53,7 @@ bar=""
 		#;;
 #esac
 case $BAT in
-   100)
-      bar="\f4$BAT"
-      ;;
-   [0-10])
+   [0-9])
       bar="\f1$BAT"
       ;;
    [5-9]*)
@@ -67,6 +64,9 @@ case $BAT in
       ;;
    [1-2]*)
       bar="\f2$BAT"
+      ;;
+   100)
+      bar="\f4$BAT"
       ;;
    *)
       bar="\f1$BAT"
