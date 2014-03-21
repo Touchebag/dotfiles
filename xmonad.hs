@@ -34,6 +34,7 @@ myManageHook :: ManageHook
 myManageHook = composeAll
    [ className =? "Skype"   --> doShift "3"
    , className =? "Firefox" --> doShift "1"
+   , className =? "Wine"    --> doShift "4"
 
    , className =? "Wine"    --> doFloat
    ]

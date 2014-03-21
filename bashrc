@@ -12,8 +12,9 @@ alias cd..='cd ..'
 
 alias gs='git status'
 alias gc='git commit -am'
+alias ga='git add'
 alias gpush='git push'
 alias gpull='git pull'
 
 #PS1='[\u@\h \W]\$ '
-PS1='[\W]\n \>\>'
+PS1='[\W]\n >> '
