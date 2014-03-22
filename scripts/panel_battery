@@ -53,6 +53,9 @@ bar=""
 		#;;
 #esac
 case $BAT in
+   100)
+      bar="\f4$BAT"
+      ;;
    [0-9])
       bar="\f1$BAT"
       ;;
@@ -65,9 +68,6 @@ case $BAT in
    [1-2]*)
       bar="\f2$BAT"
       ;;
-   100)
-      bar="\f4$BAT"
-      ;;
    *)
       bar="\f1$BAT"
       ;;
@@ -75,4 +75,4 @@ esac
 
 #echo "$icon \f9$bar"
 #echo "\f00\f11\f22\f33\f44\f55\f66\f77\f88\f99"
-echo "$icon $bar\%"
+echo "$icon$bar\%"
