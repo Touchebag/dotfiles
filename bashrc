@@ -4,15 +4,19 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Dir listings
 alias ls='ls --color=auto'
 alias la='ls -A'
 alias ll='ls -lA'
 
+# Ease of use
 alias cd..='cd ..'
 
+# Git
 alias gs='git status'
 alias gc='git commit -am'
 alias ga='git add'
+alias gd='git diff'
 alias gpush='git push'
 alias gpull='git pull'
 

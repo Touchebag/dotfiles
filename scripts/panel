@@ -4,6 +4,7 @@ killall bar
 killall trayer
 
 conky -c ~/scripts/panel_conky | bar -p &
+#conky -c ~/scripts/panel_conky | dzen2 -p &
 
 sleep 1
 

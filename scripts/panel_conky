@@ -12,4 +12,4 @@ TEXT
 \f CPU0:${cpu cpu1}% \
 \f CPU1:${cpu cpu}% \
 \f BAT:${execi 1 ~/scripts/panel_battery} \
-\fr${time %H:%M}        
+\f ${time %H:%M}        
