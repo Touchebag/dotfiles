@@ -3,14 +3,7 @@ here := $(shell pwd)
 help:
 	@echo "Select a target"
 
-all: bar bash openbox scripts xbindkeys xinitrc xmonad
-
-bar:
-	ln -fsn $(here)/scripts/panel $(HOME)/scripts/panel
-	ln -fsn $(here)/scripts/panel_conky $(HOME)/scripts/panel_conky
-	ln -fsn $(here)/scripts/panel_battery $(HOME)/scripts/panel_battery
-	ln -fsn $(here)/scripts/panel_volume $(HOME)/scripts/panel_volume
-	ln -fsn $(here)/scripts/panel_trayer $(HOME)/scripts/panel_trayer
+all: bash keylayout scripts xbindkeys xinitrc xmonad
 
 bash:
 	ln -fsn $(here)/bashrc $(HOME)/.bashrc
@@ -35,4 +28,4 @@ xinitrc:
 xmonad:
 	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
-.PHONY: bar bash keylayout openbox scripts xbindkeys xinitrc xmonad
+.PHONY: bash keylayout openbox scripts xbindkeys xinitrc xmonad

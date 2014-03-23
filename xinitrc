@@ -1,4 +1,5 @@
 #Change keymap to US with åäö
+#Caps Lock as backspace included
 xbindkeys &
 setxkbmap usaswe
 
@@ -8,6 +9,12 @@ xset fp rehash
 
 #Turn off power management and screensaver
 xset -dpms s off
+
+#Set key repeat speed
+xset r rate 250 25
+
+#Make caps lock backspace repeat
+xset r 66
 
 #Add directories to path
 export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH
