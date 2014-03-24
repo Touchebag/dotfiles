@@ -1,10 +1,12 @@
 import Data.Map (Map, fromList, union)
+import Data.List (find)
 
 import XMonad
 import XMonad.Actions.Navigation2D
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run
+import XMonad.StackSet
 
 main :: IO()
 main = do
@@ -19,7 +21,7 @@ main = do
       , borderWidth        = myBorderWidth
       , manageHook         = myManageHook <+> manageDocks
       , layoutHook         = myLayoutHook
-   }
+      }
 
 myTerminal :: String
 myTerminal = "xterm"
@@ -38,6 +40,11 @@ myManageHook = composeAll
 
    , className =? "Wine"    --> doFloat
    ]
+
+windowCount :: WorkspaceId -> X Int
+windowCount ws = withWindowSet (return . maybe 0 (length . integrate'. stack) . findWorkspace ws)
+   where
+      findWorkspace ws' = find ((== ws') . tag) . XMonad.StackSet.workspaces
 
 winBorderFocused, winBorderNormal :: String
 winBorderFocused = "#ffffff"

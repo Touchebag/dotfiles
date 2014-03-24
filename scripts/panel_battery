@@ -5,53 +5,18 @@ STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
 icon=""
 if [[ $STATUS != "Discharging" ]]; then
-	icon=""
+   icon=""
 elif [[ $BAT -lt 10 ]]; then
-	icon=""
+	icon=""
 elif [[ $BAT -lt 40 ]]; then
-	icon=""
+	icon=""
 elif [[ $BAT -lt 70 ]]; then
-	icon=""
+	icon=""
 else
-	icon=""
+   icon=""
 fi
 
 bar=""
-#case $BAT in
-	#100)
-		#bar="---------"
-		#;;
-	#[0-5])
-		#bar="\f8---------"
-		#;;
-	#[5-9])
-		#bar="\f3-\f8--------"
-		#;;
-	#[1-2]*)
-		#bar="--\f8-------"
-		#;;
-	#3*)
-		#bar="---\f8------"
-		#;;
-	#4*)
-		#bar="----\f8-----"
-		#;;
-	#5*)
-		#bar="-----\f8----"
-		#;;
-	#6*)
-		#bar="------\f8---"
-		#;;
-	#7*)
-		#bar="-------\f8--"
-		#;;
-	#8*)
-		#bar="--------\f8-"
-		#;;
-	#*)
-		#bar="---------"
-		#;;
-#esac
 case $BAT in
    100)
       bar="\f4$BAT"

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# WIFI ICONS
+# îƒ±îƒ®îƒ²îƒ¯îƒ³îƒ°
+
+QUAL=`iwconfig wlp12s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
+MAX=`iwconfig wlp12s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
+PERC=`echo $QUAL*100/$MAX | bc`
+
+icon=""
+case $PERC in
+   [0-1]*)
+      icon=""
+   ;;
+   [2-3]*)
+      icon=""
+   ;;
+   [4-5]*)
+      icon=""
+   ;;
+   [6-7]*)
+      icon=""
+   ;;
+   [8]*)
+      icon=""
+   ;;
+   *)
+      icon=""
+   ;;
+esac
+
+echo "$icon"
+
