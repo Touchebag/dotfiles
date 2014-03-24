@@ -11,6 +11,7 @@ alias ll='ls -lA'
 
 # Ease of use
 alias cd..='cd ..'
+alias y='yaourt'
 
 # Git
 alias gs='git status'
