@@ -3,18 +3,18 @@
 BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
 STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
-#icon=""
-#if [[ $STATUS != "Discharging" ]]; then
-#	icon=""
-#elif [[ $BAT -lt 10 ]]; then
-#	icon=""
-#elif [[ $BAT -lt 40 ]]; then
-#	icon=""
-#elif [[ $BAT -lt 70 ]]; then
-#	icon=""
-#else
-#	icon=""
-#fi
+icon=""
+if [[ $STATUS != "Discharging" ]]; then
+	icon=""
+elif [[ $BAT -lt 10 ]]; then
+	icon=""
+elif [[ $BAT -lt 40 ]]; then
+	icon=""
+elif [[ $BAT -lt 70 ]]; then
+	icon=""
+else
+	icon=""
+fi
 
 bar=""
 #case $BAT in
@@ -75,4 +75,4 @@ esac
 
 #echo "$icon \f9$bar"
 #echo "\f00\f11\f22\f33\f44\f55\f66\f77\f88\f99"
-echo "$icon$bar\%"
+echo "$icon $bar\%"

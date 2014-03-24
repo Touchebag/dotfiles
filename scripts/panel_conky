@@ -8,8 +8,8 @@ update_interval_on_battery 3
 
 TEXT
 \f ${execi 1 ~/scripts/panel_volume} \
-\r\f MEM:${memperc}% \
-\f CPU0:${cpu cpu1}% \
-\f CPU1:${cpu cpu}% \
-\f BAT:${execi 1 ~/scripts/panel_battery} \
+\r\f MEM ${memperc}%  \
+\f CPU0 ${cpu cpu1}%  \
+\f CPU1 ${cpu cpu}%  \
+\f ${execi 1 ~/scripts/panel_battery}  \
 \f ${time %H:%M}        

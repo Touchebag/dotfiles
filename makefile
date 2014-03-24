@@ -2,8 +2,16 @@ here := $(shell pwd)
 
 help:
 	@echo "Select a target"
+	@make -rpn | sed -n -e '/^$$/ { n ; /^[^ ]*:/p }' | egrep -v '^.PHONY' | egrep -v '^all'
 
 all: bash keylayout scripts xbindkeys xinitrc xmonad
+
+bar:
+	@read -p 'WARNING: This requires bar to be positioned in ../bar'
+	cp $(here)/bar/config.h ../bar/
+	make -C ../bar/
+	cp ../bar/bar $(here)/bar/
+	ln -fsn $(here)/bar/bar $(HOME)/bin/bar
 
 bash:
 	ln -fsn $(here)/bashrc $(HOME)/.bashrc
@@ -28,4 +36,4 @@ xinitrc:
 xmonad:
 	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
-.PHONY: bash keylayout openbox scripts xbindkeys xinitrc xmonad
+.PHONY: bar bash keylayout openbox scripts xbindkeys xinitrc xmonad
