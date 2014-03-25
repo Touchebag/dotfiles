@@ -9,6 +9,9 @@ PERC=`echo $QUAL*100/$MAX | bc`
 
 icon=""
 case $PERC in
+   100)
+      icon=""
+   ;;
    [0-1]*)
       icon=""
    ;;
@@ -24,8 +27,11 @@ case $PERC in
    [8]*)
       icon=""
    ;;
-   *)
+   [9]*)
       icon=""
+   ;;
+   *)
+      icon="\f1"
    ;;
 esac
 
