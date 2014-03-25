@@ -13,4 +13,4 @@ TEXT
 \f CPU0 ${cpu cpu1}%  \
 \f CPU1 ${cpu cpu}%  \
 \f ${execi 1 ~/scripts/panel_battery}  \
-\f ${time %H:%M}        
+\f ${time %H:%M}           
