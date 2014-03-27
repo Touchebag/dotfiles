@@ -1,1 +1,2 @@
+killall trayer
 trayer --edge top --align right --height 18 --width 5 --transparent true --alpha 0 --tint 0x232c31 --SetDockType true --SetPartialStrut true &

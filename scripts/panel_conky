@@ -7,11 +7,10 @@ update_interval 2
 update_interval_on_battery 3
 
 TEXT
-\r \
--fg #001122 ${execi 1 ~/scripts/panel_wifi} \
-\f MEM ${memperc}%  \
-\f CPU0 ${cpu cpu1}%  \
-\f CPU1 ${cpu cpu}%  \
-\f ${execi 1 ~/scripts/panel_volume} \
-\f ${execi 1 ~/scripts/panel_battery}  \
-\f ${time %H:%M}           
+^fg() ${execi 1 ~/scripts/panel_wifi}\
+^fg() MEM ${memperc}% \
+^fg() CPU0 ${cpu cpu1}% \
+^fg() CPU1 ${cpu cpu}% \
+^fg() ${execi 1 ~/scripts/panel_volume} \
+^fg() ${execi 1 ~/scripts/panel_battery} \
+^fg() ^i(/home/robin/scripts/icons/clock.xbm) ${time %H:%M}

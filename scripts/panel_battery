@@ -5,39 +5,45 @@ STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
 icon=""
 if [[ $STATUS != "Discharging" ]]; then
-   icon=""
+   icon="^i(/home/robin/scripts/icons/ac.xbm)"
 elif [[ $BAT -lt 10 ]]; then
-	icon=""
+	icon="^i(/home/robin/scripts/icons/bat_0.xbm)"
+elif [[ $BAT -lt 20 ]]; then
+	icon="^i(/home/robin/scripts/icons/bat_1.xbm)"
 elif [[ $BAT -lt 40 ]]; then
-	icon=""
-elif [[ $BAT -lt 70 ]]; then
-	icon=""
+	icon="^i(/home/robin/scripts/icons/bat_2.xbm)"
+elif [[ $BAT -lt 60 ]]; then
+	icon="^i(/home/robin/scripts/icons/bat_3.xbm)"
+elif [[ $BAT -lt 80 ]]; then
+	icon="^i(/home/robin/scripts/icons/bat_4.xbm)"
+elif [[ $BAT -lt 100 ]]; then
+	icon="^i(/home/robin/scripts/icons/bat_5.xbm)"
+elif [[ $BAT = 100 ]]; then
+	icon="^i(/home/robin/scripts/icons/bat_6.xbm)"
 else
-   icon=""
+   icon=""
 fi
 
 bar=""
 case $BAT in
    100)
-      bar="\f4$BAT"
+      bar="^fg(#00aa00)$BAT"
       ;;
    [0-9])
-      bar="\f1$BAT"
+      bar="^fg(#ff0000)$BAT"
       ;;
    [5-9]*)
-      bar="\f4$BAT"
+      bar="^fg(#00aa00)$BAT"
       ;;
    [2-5]*)
-      bar="\f3$BAT"
+      bar="^fg(#cccc00)$BAT"
       ;;
    [1-2]*)
-      bar="\f2$BAT"
+      bar="^fg(#cc6600)$BAT"
       ;;
    *)
-      bar="\f1$BAT"
+      bar="^fg(#ff0000)$BAT"
       ;;
 esac
 
-#echo "$icon \f9$bar"
-#echo "\f00\f11\f22\f33\f44\f55\f66\f77\f88\f99"
 echo "$icon $bar\%"

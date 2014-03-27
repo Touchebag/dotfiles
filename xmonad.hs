@@ -9,22 +9,38 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 
-main :: IO()
-main = do
-   --d <- spawnPipe "dzen2 -p"
-   spawn "panel"
-   xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
-      { terminal           = myTerminal
-      , focusFollowsMouse  = False
-      , focusedBorderColor = winBorderFocused
-      , normalBorderColor  = winBorderNormal
-      , modMask            = myModKey
-      , keys               = union myKeyMaps . keys defaultConfig
-      , borderWidth        = myBorderWidth
-      , manageHook         = manageDocks <+> myManageHook
-      , layoutHook         = myLayoutHook
-      --, logHook            = myLogHook d
-      }
+data Bar = Bar
+   { barFont   :: String
+   , barFg     :: String
+   , barBg     :: String
+   , barHeight :: Int
+   , barWidth  :: Int
+   , barX      :: Int
+   , barY      :: Int
+   , barAlign  :: String
+   }
+
+barToString :: Bar -> String
+barToString bar =  " -fn " ++ barFont bar
+                ++ " -fg " ++ barFg bar
+                ++ " -bg " ++ barBg bar
+                ++ " -h "  ++ show (barHeight bar)
+                ++ " -w "  ++ show (barWidth bar)
+                ++ " -x "  ++ show (barX bar)
+                ++ " -y "  ++ show (barY bar)
+                ++ " -ta " ++ barAlign bar
+
+dzenConfig :: Bar
+dzenConfig = Bar
+   { barFont   = "'-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*'"
+   , barFg     = "'#c5c8c6'"
+   , barBg     = "'#232c31'"
+   , barHeight = 18
+   , barWidth  = 1216
+   , barX      = 0
+   , barY      = 0
+   , barAlign  = "c"
+   }
 
 myTerminal :: String
 myTerminal = "xterm"
@@ -75,3 +91,37 @@ myKeyMaps = fromList $
    , ((myModKey, xK_minus), sendMessage Shrink)
    ]
 --}}}
+
+main :: IO()
+main = do
+   spawn "killall dzen2"
+   spawn "panel_trayer"
+   d <- spawnPipe $ "dzen2 -p" ++ barToString dzenLogHook
+   spawn conkyCmd
+   xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
+      { terminal           = myTerminal
+      , focusFollowsMouse  = False
+      , focusedBorderColor = winBorderFocused
+      , normalBorderColor  = winBorderNormal
+      , modMask            = myModKey
+      , keys               = union myKeyMaps . keys defaultConfig
+      , borderWidth        = myBorderWidth
+      , manageHook         = manageDocks <+> myManageHook
+      , layoutHook         = myLayoutHook
+      , logHook            = myLogHook d
+      }
+   where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -p" ++ barToString dzenConky
+
+dzenConky :: Bar
+dzenConky = dzenConfig
+   { barWidth  = 616
+   , barX      = 600
+   , barAlign  = "r"
+   }
+
+dzenLogHook :: Bar
+dzenLogHook = dzenConfig
+   { barWidth  = 616
+   , barX      = 0
+   , barAlign  = "l"
+   }

@@ -10,28 +10,28 @@ PERC=`echo $QUAL*100/$MAX | bc`
 icon=""
 case $PERC in
    100)
-      icon=""
+      icon="^i(/home/robin/scripts/icons/wifi_100.xbm)"
    ;;
    [0-1]*)
-      icon=""
+      icon="^i(/home/robin/scripts/icons/wifi_0.xbm)"
    ;;
    [2-3]*)
-      icon=""
+      icon="^i(/home/robin/scripts/icons/wifi_20.xbm)"
    ;;
    [4-5]*)
-      icon=""
+      icon="^i(/home/robin/scripts/icons/wifi_40.xbm)"
    ;;
    [6-7]*)
-      icon=""
+      icon="^i(/home/robin/scripts/icons/wifi_60.xbm)"
    ;;
    [8]*)
-      icon=""
+      icon="^i(/home/robin/scripts/icons/wifi_80.xbm)"
    ;;
    [9]*)
-      icon=""
+      icon="^i(/home/robin/scripts/icons/wifi_100.xbm)"
    ;;
    *)
-      icon="\f1"
+      icon="^fg(#cc0000)^i(/home/robin/scripts/icons/error.xbm)"
    ;;
 esac
 

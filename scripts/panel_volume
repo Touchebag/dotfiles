@@ -5,51 +5,61 @@ MUTE=`amixer get Master | awk 'FNR == 5 {print $6}' | tr -d '[]'`
 
 icon=""
 
+fullcolor="^fg(#cc6666)"
+emptycolor="^fg(#425059)"
+
 bar=""
 case $VOL in
 	100)
 		bar="---------"
 		;;
 	0)
-		bar="\f8---------"
-      icon=""
+		bar="$emptycolor---------"
 		;;
 	[1-5])
-		bar="\f8---------"
+		bar="$emptycolor---------"
 		;;
 	[5-9])
-		bar="-\f8--------"
+		bar="-$emptycolor--------"
 		;;
 	[1-2]*)
-		bar="--\f8-------"
+		bar="--$emptycolor-------"
 		;;
 	3*)
-		bar="---\f8------"
+		bar="---$emptycolor------"
 		;;
 	4*)
-		bar="----\f8-----"
+		bar="----$emptycolor-----"
 		;;
 	5*)
-		bar="-----\f8----"
+		bar="-----$emptycolor----"
 		;;
 	6*)
-		bar="------\f8---"
+		bar="------$emptycolor---"
 		;;
 	7*)
-		bar="-------\f8--"
+		bar="-------$emptycolor--"
 		;;
 	8*)
-		bar="--------\f8-"
+		bar="--------$emptycolor-"
 		;;
 	*)
 		bar="---------"
 		;;
 esac
 
-if [[ $MUTE = "off" ]]; then
-	icon="\f1$icon"
+if [[ $VOL = 0 ]]; then
+	icon="^i(/home/robin/scripts/icons/vol_0.xbm)"
+elif [[ $VOL -lt 50 ]]; then
+	icon="^i(/home/robin/scripts/icons/vol_50.xbm)"
 else
-	icon="\f $icon"
+	icon="^i(/home/robin/scripts/icons/vol_100.xbm)"
 fi
 
-echo "$icon \f9$bar"
+if [[ $MUTE = "off" ]]; then
+	icon="^fg(#cc0000)$icon"
+else
+	icon="^fg()$icon"
+fi
+
+echo "$icon $fullcolor$bar"
