@@ -8,7 +8,7 @@ update_interval_on_battery 3
 
 TEXT
 \r \
-\f ${execi 1 ~/scripts/panel_wifi} \
+-fg #001122 ${execi 1 ~/scripts/panel_wifi} \
 \f MEM ${memperc}%  \
 \f CPU0 ${cpu cpu1}%  \
 \f CPU1 ${cpu cpu}%  \
