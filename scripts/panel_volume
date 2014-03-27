@@ -3,19 +3,18 @@
 VOL=`amixer get Master | awk 'FNR == 5 {print $4}' | tr -d '[]%'`
 MUTE=`amixer get Master | awk 'FNR == 5 {print $6}' | tr -d '[]'`
 
-icon=""
-if [[ $MUTE = "off" ]]; then
-	icon="\f1"
-else
-	icon=""
-fi
+icon=""
 
 bar=""
 case $VOL in
 	100)
 		bar="---------"
 		;;
-	[0-5])
+	0)
+		bar="\f8---------"
+      icon=""
+		;;
+	[1-5])
 		bar="\f8---------"
 		;;
 	[5-9])
@@ -46,5 +45,11 @@ case $VOL in
 		bar="---------"
 		;;
 esac
+
+if [[ $MUTE = "off" ]]; then
+	icon="\f1$icon"
+else
+	icon="\f $icon"
+fi
 
 echo "$icon \f9$bar"
