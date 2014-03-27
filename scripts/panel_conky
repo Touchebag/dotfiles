@@ -7,10 +7,11 @@ update_interval 2
 update_interval_on_battery 3
 
 TEXT
-\l\f ${execi 1 ~/scripts/panel_volume} \
+\r \
 \f ${execi 1 ~/scripts/panel_wifi} \
-\r\f MEM ${memperc}%  \
+\f MEM ${memperc}%  \
 \f CPU0 ${cpu cpu1}%  \
 \f CPU1 ${cpu cpu}%  \
+\f ${execi 1 ~/scripts/panel_volume} \
 \f ${execi 1 ~/scripts/panel_battery}  \
 \f ${time %H:%M}           

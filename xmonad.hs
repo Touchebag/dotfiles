@@ -1,17 +1,19 @@
 import Data.Map (Map, fromList, union)
-import Data.List (find)
+import System.IO
 
 import XMonad
 import XMonad.Actions.Navigation2D
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run
-import XMonad.StackSet
 
 main :: IO()
 main = do
+   --d <- spawnPipe "dzen2 -p"
    spawn "panel"
-   xmonad $ defaultConfig
+   xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
       { terminal           = myTerminal
       , focusFollowsMouse  = False
       , focusedBorderColor = winBorderFocused
@@ -19,8 +21,9 @@ main = do
       , modMask            = myModKey
       , keys               = union myKeyMaps . keys defaultConfig
       , borderWidth        = myBorderWidth
-      , manageHook         = myManageHook <+> manageDocks
+      , manageHook         = manageDocks <+> myManageHook
       , layoutHook         = myLayoutHook
+      --, logHook            = myLogHook d
       }
 
 myTerminal :: String
@@ -41,17 +44,18 @@ myManageHook = composeAll
    , className =? "Wine"    --> doFloat
    ]
 
-windowCount :: WorkspaceId -> X Int
-windowCount ws = withWindowSet (return . maybe 0 (length . integrate'. stack) . findWorkspace ws)
-   where
-      findWorkspace ws' = find ((== ws') . tag) . XMonad.StackSet.workspaces
-
 winBorderFocused, winBorderNormal :: String
 winBorderFocused = "#ffffff"
 winBorderNormal = "#333333"
 
 myLayoutHook = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
       where tiled = Tall 1 0.03 0.5
+
+myLogHook :: Handle -> X()
+myLogHook d = dynamicLogWithPP $ defaultPP
+      { ppOutput = hPutStrLn d
+      , ppUrgent = dzenColor "#FFAA00 " "" . pad
+      }
 
 --{{{ Keymaps
 myKeyMaps :: Map (KeyMask, KeySym) (X ())
