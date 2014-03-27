@@ -70,7 +70,8 @@ myLayoutHook = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
 myLogHook :: Handle -> X()
 myLogHook d = dynamicLogWithPP $ defaultPP
       { ppOutput = hPutStrLn d
-      , ppUrgent = dzenColor "#FFAA00 " "" . pad
+      , ppCurrent = dzenColor "#000000" "#cccccc"
+      , ppOrder = \(w:_:t:_) -> [w,t]
       }
 
 --{{{ Keymaps

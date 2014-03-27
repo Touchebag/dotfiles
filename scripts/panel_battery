@@ -46,4 +46,4 @@ case $BAT in
       ;;
 esac
 
-echo "$icon $bar\%"
+echo "$icon $bar%"
