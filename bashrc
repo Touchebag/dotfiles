@@ -4,6 +4,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Vim mode
+set -o vi
+
 # Dir listings
 alias ls='ls --color=auto'
 alias la='ls -A'
