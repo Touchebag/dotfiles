@@ -4,7 +4,7 @@ help:
 	@echo "Select a target"
 	@make -rpn | sed -n -e '/^$$/ { n ; /^[^ ]*:/p }' | egrep -v '^.PHONY' | egrep -v '^all'
 
-all: bash keylayout scripts xbindkeys xinitrc xmonad zsh
+all: bash keylayout scripts xbindkeys xinitrc xmonad
 
 bar:
 	@read -p 'WARNING: This requires bar to be positioned in ../bar'
@@ -36,7 +36,4 @@ xinitrc:
 xmonad:
 	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
-zsh:
-	ln -fsn $(here)/zprofile $(HOME)/.zprofile
-
-.PHONY: bar bash keylayout openbox scripts xbindkeys xinitrc xmonad zsh
+.PHONY: bar bash keylayout openbox scripts xbindkeys xinitrc xmonad
