@@ -1,0 +1,4 @@
+sudo netctl stop zyxel
+sudo netctl stop eduroam
+
+sudo netctl start zyxel
