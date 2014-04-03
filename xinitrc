@@ -16,9 +16,6 @@ xset r rate 250 25
 #Make caps lock backspace repeat
 xset r 66
 
-#Add directories to path
-export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH
-
 #{{{Startup scripts
 #Background image
 sh ~/.fehbg
