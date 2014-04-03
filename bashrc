@@ -7,6 +7,9 @@
 # Vim mode
 set -o vi
 
+# Feel good alias for sudo
+alias fucking='sudo'
+
 # Dir listings
 alias ls='ls --color=auto'
 alias la='ls -A'
