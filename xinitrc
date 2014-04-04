@@ -19,17 +19,17 @@ xset r 66
 #Add directories to path
 export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH
 
-#{{{Startup scripts
 #Background image
 sh ~/.fehbg
 
 #Hide mouse cursor
 unclutter &
-#}}}
 
 #Autostart home network for convenience
 sudo netctl start zyxel &
 
+#Autostart Firefox
+firefox &
+
 #Start xserver
 exec xmonad
-#exec openbox-session

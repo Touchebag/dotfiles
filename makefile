@@ -14,6 +14,7 @@ bar:
 	ln -fsn $(here)/bar/bar $(HOME)/bin/bar
 
 bash:
+	ln -fsn $(here)/bash_profile $(HOME)/.bash_profile
 	ln -fsn $(here)/bashrc $(HOME)/.bashrc
 
 keylayout:
@@ -38,5 +39,6 @@ xmonad:
 
 zsh:
 	ln -fsn $(here)/zprofile $(HOME)/.zprofile
+	ln -fsn $(here)/zshrc $(HOME)/.zshrc
 
 .PHONY: bar bash keylayout openbox scripts xbindkeys xinitrc xmonad zsh
