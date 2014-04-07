@@ -58,6 +58,7 @@ myManageHook = composeAll
    , className =? "Wine"    --> doShift "4"
 
    , className =? "Wine"    --> doFloat
+   , className =? "feh"     --> doFloat
    ]
 
 winBorderFocused, winBorderNormal :: String
@@ -86,7 +87,7 @@ myKeyMaps = fromList $
    , ((myModKey, xK_j), windowGo D False)
    , ((myModKey, xK_k), windowGo U False)
 
-   , ((myModKey .|. shiftMask, xK_l), spawn "slock")
+   , ((myModKey .|. shiftMask, xK_l), spawn "slimlock")
 
    , ((myModKey, xK_q), kill)
    , ((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
