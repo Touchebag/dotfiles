@@ -80,12 +80,14 @@ myKeyMaps = fromList $
    [ ((myModKey, xK_r), spawn "dmenu_run")
    , ((myModKey, xK_f), safeSpawnProg myTerminal)
    , ((myModKey, xK_e), safeSpawnProg "firefox")
-   
+
    , ((myModKey, xK_h), windowGo L False)
    , ((myModKey, xK_l), windowGo R False)
    , ((myModKey, xK_j), windowGo D False)
    , ((myModKey, xK_k), windowGo U False)
-   
+
+   , ((myModKey .|. shiftMask, xK_l), spawn "slock")
+
    , ((myModKey, xK_q), kill)
    , ((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
    , ((myModKey, xK_equal), sendMessage Expand)
