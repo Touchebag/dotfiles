@@ -4,7 +4,7 @@ help:
 	@echo "Select a target"
 	@make -rpn | sed -n -e '/^$$/ { n ; /^[^ ]*:/p }' | egrep -v '^.PHONY' | egrep -v '^all'
 
-all: bash keylayout scripts xbindkeys xinitrc xmonad zsh
+all: bash keylayout scripts slim xbindkeys xinitrc xmonad zsh
 
 bar:
 	@read -p 'WARNING: This requires bar to be positioned in ../bar'
@@ -28,6 +28,11 @@ openbox:
 scripts:
 	ln -fsn $(here)/scripts $(HOME)/scripts
 
+slim:
+	sudo ln -fsn $(here)/slim/images/background.png /usr/share/slim/themes/slim-archlinux-default/background.png
+	sudo ln -fsn $(here)/slim/images/panel.png /usr/share/slim/themes/slim-archlinux-default/panel.png
+	sudo ln -fsn $(here)/slim/slim.theme /usr/share/slim/themes/slim-archlinux-default/slim.theme
+
 xbindkeys:
 	ln -fsn $(here)/xbindkeysrc $(HOME)/.xbindkeysrc
 
@@ -41,4 +46,4 @@ zsh:
 	ln -fsn $(here)/zprofile $(HOME)/.zprofile
 	ln -fsn $(here)/zshrc $(HOME)/.zshrc
 
-.PHONY: bar bash keylayout openbox scripts xbindkeys xinitrc xmonad zsh
+.PHONY: bar bash keylayout openbox scripts slim xbindkeys xinitrc xmonad zsh
