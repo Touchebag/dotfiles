@@ -32,6 +32,8 @@ slim:
 	sudo ln -fsn $(here)/slim/images/background.png /usr/share/slim/themes/slim-archlinux-default/background.png
 	sudo ln -fsn $(here)/slim/images/panel.png /usr/share/slim/themes/slim-archlinux-default/panel.png
 	sudo ln -fsn $(here)/slim/slim.theme /usr/share/slim/themes/slim-archlinux-default/slim.theme
+	sudo ln -fsn $(here)/slim/slim.conf /etc/slim.conf
+	sudo ln -fsn $(here)/slim/slimlock.conf /etc/slimlock.conf
 
 xbindkeys:
 	ln -fsn $(here)/xbindkeysrc $(HOME)/.xbindkeysrc
