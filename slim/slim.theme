@@ -4,7 +4,7 @@
 # http://www.cinderwick.ca
 
 # messages (ie: shutdown, session options, etc)
-msg_color               #ffffff
+msg_color               #000000
 msg_font                Sans:size=10:bold:dpi=96
 msg_x                   50%
 msg_y                   70%
