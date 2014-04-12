@@ -21,8 +21,8 @@ alias y='yaourt'
 
 # Git
 alias gs='git status'
-alias gc='git commit -m'
-alias gac='git commit -am'
+alias gc='git commit'
+alias gac='git commit -a'
 alias ga='git add'
 alias gd='git diff'
 alias gpush='git push'
