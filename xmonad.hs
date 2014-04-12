@@ -6,6 +6,7 @@ import XMonad.Actions.Navigation2D
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
+import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 
@@ -65,6 +66,7 @@ winBorderFocused, winBorderNormal :: String
 winBorderFocused = "#ffffff"
 winBorderNormal = "#333333"
 
+myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose Tall (Choose (Mirror Tall) Full))) Window
 myLayoutHook = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
       where tiled = Tall 1 0.03 0.5
 
@@ -77,7 +79,7 @@ myLogHook d = dynamicLogWithPP $ defaultPP
 
 --{{{ Keymaps
 myKeyMaps :: Map (KeyMask, KeySym) (X ())
-myKeyMaps = fromList $
+myKeyMaps = fromList
    [ ((myModKey, xK_r), spawn "dmenu_run")
    , ((myModKey, xK_f), safeSpawnProg myTerminal)
    , ((myModKey, xK_e), safeSpawnProg "firefox")
