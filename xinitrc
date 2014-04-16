@@ -29,7 +29,7 @@ unclutter &
 sudo netctl start zyxel &
 
 #Autostart Firefox
-firefox &
+#firefox &
 
 #Start xserver
 exec xmonad
