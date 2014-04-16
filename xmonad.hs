@@ -100,7 +100,6 @@ myKeyMaps = fromList
 
 main :: IO()
 main = do
-   --spawn "killall dzen2"
    spawn "panel_trayer"
    d <- spawnPipe $ "dzen2 -p" ++ barToString dzenLogHook
    spawn conkyCmd
