@@ -57,9 +57,11 @@ myManageHook = composeAll
    [ className =? "Skype"   --> doShift "3"
    , className =? "Firefox" --> doShift "1"
    , className =? "Wine"    --> doShift "4"
+   , className =? "Steam"   --> doShift "4"
 
    , className =? "Wine"    --> doFloat
    , className =? "feh"     --> doFloat
+   , className =? "Steam"   --> doFloat
    ]
 
 winBorderFocused, winBorderNormal :: String
