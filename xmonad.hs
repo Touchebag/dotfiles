@@ -6,6 +6,7 @@ import XMonad.Actions.Navigation2D
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run
@@ -113,9 +114,10 @@ main = do
       , modMask            = myModKey
       , keys               = union myKeyMaps . keys defaultConfig
       , borderWidth        = myBorderWidth
-      , manageHook         = manageDocks <+> myManageHook
-      , layoutHook         = myLayoutHook
+      , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
+      , layoutHook         = fullscreenFull myLayoutHook
       , logHook            = myLogHook d
+      , handleEventHook    = fullscreenEventHook
       }
    where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -p" ++ barToString dzenConky
 
