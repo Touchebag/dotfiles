@@ -4,9 +4,7 @@ BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
 STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
 icon=""
-if [[ $STATUS != "Discharging" ]]; then
-   icon="^i(/home/robin/scripts/icons/ac.xbm)"
-elif [[ $BAT -lt 10 ]]; then
+if [[ $BAT -lt 10 ]]; then
 	icon="^i(/home/robin/scripts/icons/bat_0.xbm)"
 elif [[ $BAT -lt 20 ]]; then
 	icon="^i(/home/robin/scripts/icons/bat_1.xbm)"
@@ -22,6 +20,9 @@ elif [[ $BAT = 100 ]]; then
 	icon="^i(/home/robin/scripts/icons/bat_6.xbm)"
 else
    icon=""
+fi
+if [[ $STATUS != "Discharging" ]]; then
+   icon="^i(/home/robin/scripts/icons/ac.xbm)$icon"
 fi
 
 bar=""
