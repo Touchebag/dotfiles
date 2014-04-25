@@ -62,7 +62,6 @@ myManageHook = composeAll
 
    , className =? "Wine"    --> doFloat
    , className =? "feh"     --> doFloat
-   , className =? "Steam"   --> doFloat
    ]
 
 winBorderFocused, winBorderNormal :: String
@@ -115,7 +114,7 @@ main = do
       , keys               = union myKeyMaps . keys defaultConfig
       , borderWidth        = myBorderWidth
       , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
-      , layoutHook         = fullscreenFull myLayoutHook
+      , layoutHook         = fullscreenFull $ lessBorders OnlyFloat myLayoutHook
       , logHook            = myLogHook d
       , handleEventHook    = fullscreenEventHook
       }
