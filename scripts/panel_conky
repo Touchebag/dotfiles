@@ -9,6 +9,7 @@ update_interval_on_battery 3
 TEXT
 ^fg() ${execi 1 ~/scripts/panel_wifi}\
 ^fg() MEM ${memperc}% \
+^fg() ${execi 1 ~/scripts/panel_cpu} \
 ^fg() CPU0 ${cpu cpu1}% \
 ^fg() CPU1 ${cpu cpu}% \
 ^fg() ${execi 1 ~/scripts/panel_volume} \
