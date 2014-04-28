@@ -6,13 +6,6 @@ help:
 
 all: bash keylayout scripts slim xbindkeys xinitrc xmonad zsh
 
-bar:
-	@read -p 'WARNING: This requires bar to be positioned in ../bar'
-	cp $(here)/bar/config.h ../bar/
-	make -C ../bar/
-	cp ../bar/bar $(here)/bar/
-	ln -fsn $(here)/bar/bar $(HOME)/bin/bar
-
 bash:
 	ln -fsn $(here)/bash_profile $(HOME)/.bash_profile
 	ln -fsn $(here)/bashrc $(HOME)/.bashrc
@@ -48,4 +41,4 @@ zsh:
 	ln -fsn $(here)/zprofile $(HOME)/.zprofile
 	ln -fsn $(here)/zshrc $(HOME)/.zshrc
 
-.PHONY: bar bash keylayout openbox scripts slim xbindkeys xinitrc xmonad zsh
+.PHONY: bash keylayout openbox scripts slim xbindkeys xinitrc xmonad zsh
