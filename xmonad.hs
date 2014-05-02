@@ -1,4 +1,4 @@
-import Data.Map (Map, fromList, union)
+import Data.Map (Map, fromList)
 import System.IO
 
 import XMonad
@@ -9,6 +9,7 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders
+import XMonad.StackSet
 import XMonad.Util.Run
 
 data Bar = Bar
@@ -80,8 +81,8 @@ myLogHook d = dynamicLogWithPP $ defaultPP
       }
 
 --{{{ Keymaps
-myKeyMaps :: Map (KeyMask, KeySym) (X ())
-myKeyMaps = fromList
+myKeyMaps :: XConfig Layout -> Map (KeyMask, KeySym) (X ())
+myKeyMaps conf = fromList $
    [ ((myModKey, xK_r), spawn "dmenu_run")
    , ((myModKey, xK_f), safeSpawnProg myTerminal)
    , ((myModKey, xK_e), safeSpawnProg "firefox")
@@ -97,6 +98,13 @@ myKeyMaps = fromList
    , ((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
    , ((myModKey, xK_equal), sendMessage Expand)
    , ((myModKey, xK_minus), sendMessage Shrink)
+
+   ]
+
+   ++
+
+   [((myModKey .|. shiftMask, k), windows (XMonad.StackSet.shift i) >> windows (XMonad.StackSet.greedyView i))
+      | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
    ]
 --}}}
 
@@ -111,7 +119,7 @@ main = do
       , focusedBorderColor = winBorderFocused
       , normalBorderColor  = winBorderNormal
       , modMask            = myModKey
-      , keys               = union myKeyMaps . keys defaultConfig
+      , keys               = myKeyMaps
       , borderWidth        = myBorderWidth
       , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
       , layoutHook         = fullscreenFull $ lessBorders OnlyFloat myLayoutHook
