@@ -102,8 +102,12 @@ myKeyMaps conf = fromList $
    ]
 
    ++
-
    [((myModKey .|. shiftMask, k), windows (XMonad.StackSet.shift i) >> windows (XMonad.StackSet.greedyView i))
+      | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+   ]
+
+   ++
+   [((myModKey, k), windows (XMonad.StackSet.greedyView i))
       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
    ]
 --}}}
