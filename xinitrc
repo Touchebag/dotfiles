@@ -17,7 +17,7 @@ xset r rate 250 25
 xset r 66
 
 #Add directories to path
-export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH
+export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH:$HOME/Desktop/
 
 #Background image
 sh ~/.fehbg
