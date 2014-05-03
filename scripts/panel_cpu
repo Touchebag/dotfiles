@@ -1,12 +1,17 @@
 #!/bin/bash
 
+# Temperature of each CPU core
 CPU1=`sensors | awk 'FNR == 3 {print $3}' | tr -d '.+°C'`
 CPU2=`sensors | awk 'FNR == 4 {print $3}' | tr -d '.+°C'`
 
+# Set the icon and deafult colour
 icon="^i(/home/robin/scripts/icons/temp.xbm)"
 color="^fg()"
+
+# Calculate the average temperature of both cores
 temp="$(((($CPU1/10)+($CPU2/10))/2))"
 
+# Change colour depending on temperature
 if (($temp >= 80)); then
    color="^fg(#cc0000)"
 elif (($temp >= 70)); then
@@ -15,4 +20,5 @@ elif (($temp >= 60)); then
    color="^fg(#aaaa00)"
 fi
 
+# Output
 echo "$icon $color$temp°C"

@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# The current battery percentage
 BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
+# Current charging status of battery
 STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
+# Change the icon depending on percentage
 icon=""
 if [[ $BAT -lt 10 ]]; then
 	icon="^i(/home/robin/scripts/icons/bat_0.xbm)"
@@ -21,10 +24,13 @@ elif [[ $BAT = 100 ]]; then
 else
    icon=""
 fi
+
+# Add the charging icon if plugged in
 if [[ $STATUS != "Discharging" ]]; then
    icon="^i(/home/robin/scripts/icons/ac.xbm)$icon"
 fi
 
+# Change colour of text depending on percentage
 bar=""
 case $BAT in
    100)
@@ -47,4 +53,5 @@ case $BAT in
       ;;
 esac
 
+# Output
 echo "$icon $bar%"

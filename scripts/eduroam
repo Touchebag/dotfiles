@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Laziness script for network
 sudo netctl stop zyxel
 sudo netctl stop eduroam
 

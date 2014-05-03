@@ -1,13 +1,18 @@
 #!/bin/bash
 
+# Current system volume
 VOL=`amixer get Master | awk 'FNR == 5 {print $4}' | tr -d '[]%'`
+# Current mute status
 MUTE=`amixer get Master | awk 'FNR == 5 {print $6}' | tr -d '[]'`
 
-icon=""
+# Deafult icon
+icon="^i(/home/robin/scripts/icons/vol_100.xbm)"
 
+# Colours for the volume bar
 fullcolor="^fg(#cc6666)"
 emptycolor="^fg(#425059)"
 
+# Show bar depending on volume
 bar=""
 case $VOL in
 	100)
@@ -48,6 +53,7 @@ case $VOL in
 		;;
 esac
 
+# Change icon depending on volume
 if [[ $VOL = 0 ]]; then
 	icon="^i(/home/robin/scripts/icons/vol_0.xbm)"
 elif [[ $VOL -lt 50 ]]; then
@@ -56,10 +62,12 @@ else
 	icon="^i(/home/robin/scripts/icons/vol_100.xbm)"
 fi
 
+# Change colour of icon depending on volume
 if [[ $MUTE = "off" ]]; then
 	icon="^fg(#cc0000)$icon"
 else
 	icon="^fg()$icon"
 fi
 
+# Output
 echo "$icon $fullcolor$bar"

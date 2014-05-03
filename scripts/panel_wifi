@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# WIFI ICONS
-# îƒ±îƒ®îƒ²îƒ¯îƒ³îƒ°
-
-QUAL=`iwconfig wlp12s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
+# Current connection strength
+QUA=`iwconfig wlp12s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
+# Max connection strength
 MAX=`iwconfig wlp12s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
-PERC=`echo $QUAL*100/$MAX | bc`
 
+# Calculate percentage strength
+PERC=`echo $QUA*100/$MAX | bc`
+
+# Change icon depending on strength
 icon=""
 case $PERC in
    100)
@@ -35,5 +37,6 @@ case $PERC in
    ;;
 esac
 
+# Output
 echo "$icon"
 
