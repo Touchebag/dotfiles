@@ -12,6 +12,8 @@ import XMonad.Layout.NoBorders
 import XMonad.StackSet
 import XMonad.Util.Run
 
+-- {{{ Bar stuff
+-- Data structure to make handling dzen config easier
 data Bar = Bar
    { barFont   :: String
    , barFg     :: String
@@ -23,6 +25,7 @@ data Bar = Bar
    , barAlign  :: String
    }
 
+-- Outputs a string with the format of the Bar
 barToString :: Bar -> String
 barToString bar =  " -fn " ++ barFont bar
                 ++ " -fg " ++ barFg bar
@@ -33,6 +36,7 @@ barToString bar =  " -fn " ++ barFont bar
                 ++ " -y "  ++ show (barY bar)
                 ++ " -ta " ++ barAlign bar
 
+-- Default dzen config
 dzenConfig :: Bar
 dzenConfig = Bar
    { barFont   = "'-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*'"
@@ -45,6 +49,24 @@ dzenConfig = Bar
    , barAlign  = "c"
    }
 
+-- Custom config for the Conky bar
+dzenConky :: Bar
+dzenConky = dzenConfig
+   { barWidth  = 616
+   , barX      = 600
+   , barAlign  = "r"
+   }
+
+-- Custom config for the main bar
+dzenLogHook :: Bar
+dzenLogHook = dzenConfig
+   { barWidth  = 616
+   , barX      = 0
+   , barAlign  = "l"
+   }
+-- }}}
+
+--{{{ Xmonad stuff
 myTerminal :: String
 myTerminal = "xterm"
 
@@ -65,6 +87,7 @@ myManageHook = composeAll
    , className =? "feh"     --> doFloat
    ]
 
+-- Border colour of windows
 winBorderFocused, winBorderNormal :: String
 winBorderFocused = "#ffffff"
 winBorderNormal = "#333333"
@@ -79,38 +102,48 @@ myLogHook d = dynamicLogWithPP $ defaultPP
       , ppCurrent = dzenColor "#000000" "#cccccc"
       , ppOrder = \(w:_:t:_) -> [w,t]
       }
+-- }}}
 
 --{{{ Keymaps
 myKeyMaps :: XConfig Layout -> Map (KeyMask, KeySym) (X ())
 myKeyMaps conf = fromList $
+   -- Program shortcuts
    [ ((myModKey, xK_r), spawn "dmenu_run")
    , ((myModKey, xK_f), safeSpawnProg myTerminal)
    , ((myModKey, xK_e), safeSpawnProg "firefox")
 
+   -- Movement keys
    , ((myModKey, xK_h), windowGo L False)
    , ((myModKey, xK_l), windowGo R False)
    , ((myModKey, xK_j), windowGo D False)
    , ((myModKey, xK_k), windowGo U False)
 
+   -- Screen lock
    , ((myModKey .|. shiftMask, xK_l), spawn "slimlock")
 
-   , ((myModKey, xK_q), kill)
-   , ((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
-   , ((myModKey, xK_t), withFocused $ windows . XMonad.StackSet.sink)
-   , ((myModKey, xK_equal), sendMessage Expand)
-   , ((myModKey, xK_minus), sendMessage Shrink)
+   -- Misc keys
+   , ((myModKey, xK_q), kill) --Close current window
+   , ((myModKey, xK_t), withFocused $ windows . XMonad.StackSet.sink) --Push window back into tiling
+   , ((myModKey, xK_equal), sendMessage Expand) --Selfexplanatory
+   , ((myModKey, xK_minus), sendMessage Shrink) --See above
 
    ]
 
    ++
+   -- Keys for switching workspaces
+   [((myModKey, k), windows (XMonad.StackSet.greedyView i))
+      | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+   ]
+
+   ++
+   -- Keys for shifting windows. Current workspace follows shifted window
    [((myModKey .|. shiftMask, k), windows (XMonad.StackSet.shift i) >> windows (XMonad.StackSet.greedyView i))
       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
    ]
 
    ++
-   [((myModKey, k), windows (XMonad.StackSet.greedyView i))
-      | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-   ]
+   -- Recompile Xmonad
+   [((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")]
 --}}}
 
 main :: IO()
@@ -133,16 +166,3 @@ main = do
       }
    where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -p" ++ barToString dzenConky
 
-dzenConky :: Bar
-dzenConky = dzenConfig
-   { barWidth  = 616
-   , barX      = 600
-   , barAlign  = "r"
-   }
-
-dzenLogHook :: Bar
-dzenLogHook = dzenConfig
-   { barWidth  = 616
-   , barX      = 0
-   , barAlign  = "l"
-   }
