@@ -1,5 +1,5 @@
 #
-# ~/.bashrc
+# ~/.zshrc
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -21,12 +21,14 @@ alias y='yaourt'
 
 # Git
 alias gs='git status'
-alias gc='git commit -m'
-alias gac='git commit -am'
+alias gc='git commit'
+alias gac='git commit -a'
 alias ga='git add'
 alias gd='git diff'
 alias gpush='git push'
 alias gpull='git pull'
 
 #PS1='[\u@\h \W]\$ '
-PS1='[\W]\n >> '
+PROMPT='[%~]
+ >> '
+#RPROMPT="%{%n@%m$terminfo[cud1] >>%}"
