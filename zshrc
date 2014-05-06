@@ -29,6 +29,6 @@ alias gpush='git push'
 alias gpull='git pull'
 
 #PS1='[\u@\h \W]\$ '
-PROMPT='[%~]
+PROMPT='[%2~]
  >> '
 #RPROMPT="%{%n@%m$terminfo[cud1] >>%}"
