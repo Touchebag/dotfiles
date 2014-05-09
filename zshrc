@@ -7,6 +7,9 @@
 # Vim mode
 set -o vi
 
+# Avoid successive duplicate commands in history
+setopt HIST_IGNORE_DUPS
+
 # Feel good alias for sudo
 alias fucking='sudo'
 
