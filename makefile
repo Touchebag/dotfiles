@@ -7,8 +7,8 @@ help:
 all: bash keylayout scripts slim xbindkeys xinitrc xmonad zsh
 
 bash:
-	ln -fsn $(here)/bash_profile $(HOME)/.bash_profile
-	ln -fsn $(here)/bashrc $(HOME)/.bashrc
+	ln -fsn $(here)/bash/bash_profile $(HOME)/.bash_profile
+	ln -fsn $(here)/bash/bashrc $(HOME)/.bashrc
 
 keylayout:
 	ln -fsn $(here)/usaswe /usr/share/X11/xkb/symbols/usaswe
@@ -38,7 +38,7 @@ xmonad:
 	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
 zsh:
-	ln -fsn $(here)/zprofile $(HOME)/.zprofile
-	ln -fsn $(here)/zshrc $(HOME)/.zshrc
+	ln -fsn $(here)/zsh/zprofile $(HOME)/.zprofile
+	ln -fsn $(here)/zsh/zshrc $(HOME)/.zshrc
 
 .PHONY: bash keylayout openbox scripts slim xbindkeys xinitrc xmonad zsh
