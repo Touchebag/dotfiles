@@ -28,8 +28,8 @@ alias gc='git commit'
 alias gac='git commit -a'
 alias ga='git add'
 alias gd='git diff'
-alias gpush='git push'
-alias gpull='git pull'
+alias gph='git push'
+alias gpl='git pull'
 
 function zle-line-init zle-keymap-select {
     PROMPT="[%2~] ${${KEYMAP/vicmd/--NORMAL--}/(main|viins)/--INSERT--}
