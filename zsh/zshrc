@@ -10,6 +10,10 @@ set -o vi
 # Avoid successive duplicate commands in history
 setopt HIST_IGNORE_DUPS
 
+# Completion magic
+autoload -Uz compinit
+compinit
+
 # Feel good alias for sudo
 alias fucking='sudo'
 
