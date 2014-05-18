@@ -25,7 +25,7 @@ alias y='yaourt'
 # Git
 alias g='git'
 alias ga='git add'
-alias gac='git commit -a'
+alias gca='git commit -a'
 alias gc='git commit'
 alias gch='git checkout'
 alias gd='git diff'
@@ -33,6 +33,7 @@ alias gf='git fetch'
 alias gph='git push'
 alias gpl='git pull'
 alias gr='git rebase'
+alias grc='git rebase --continue'
 alias gs='git status'
 
 function zle-line-init zle-keymap-select {
