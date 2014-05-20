@@ -1,10 +1,10 @@
 [user]
-	email = email@email.com
-	name = Touchebag
+#  email = email@email.com
+   name = Touchebag
 [push]
-	default = simple
+   default = simple
 [core]
-	editor = vim
+   editor = vim
 [filter "gitignore"]
    clean = "sed '/#gitignore$/'d"
    smudge = cat
