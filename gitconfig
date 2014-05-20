@@ -1,0 +1,7 @@
+[user]
+	email = email@email.com
+	name = Touchebag
+[push]
+	default = simple
+[core]
+	editor = vim

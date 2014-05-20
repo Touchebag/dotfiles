@@ -4,11 +4,14 @@ help:
 	@echo "Select a target"
 	@make -rpn | sed -n -e '/^$$/ { n ; /^[^ ]*:/p }' | egrep -v '^.PHONY' | egrep -v '^all'
 
-all: bash keylayout scripts slim xbindkeys xinitrc xmonad zsh
+all: bash gitconfig keylayout scripts slim xbindkeys xinitrc xmonad zsh
 
 bash:
 	ln -fsn $(here)/bash/bash_profile $(HOME)/.bash_profile
 	ln -fsn $(here)/bash/bashrc $(HOME)/.bashrc
+
+git:
+	ln -fsn $(here)/gitconfig $(HOME)/.gitconfig
 
 keylayout:
 	ln -fsn $(here)/usaswe /usr/share/X11/xkb/symbols/usaswe
@@ -41,4 +44,4 @@ zsh:
 	ln -fsn $(here)/zsh/zprofile $(HOME)/.zprofile
 	ln -fsn $(here)/zsh/zshrc $(HOME)/.zshrc
 
-.PHONY: bash keylayout openbox scripts slim xbindkeys xinitrc xmonad zsh
+.PHONY: bash gitconfig keylayout openbox scripts slim xbindkeys xinitrc xmonad zsh
