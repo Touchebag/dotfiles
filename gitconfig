@@ -5,3 +5,6 @@
 	default = simple
 [core]
 	editor = vim
+[filter "gitignore"]
+   clean = "sed '/#gitignore$/'d"
+   smudge = cat
