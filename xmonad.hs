@@ -126,6 +126,9 @@ myKeyMaps conf = fromList $
    , ((myModKey, xK_t), withFocused $ windows . XMonad.StackSet.sink) --Push window back into tiling
    , ((myModKey, xK_equal), sendMessage Expand) --Selfexplanatory
    , ((myModKey, xK_minus), sendMessage Shrink) --See above
+   , ((myModKey, xK_Return), windows swapMaster) --Swaps current and master windows
+   , ((myModKey, xK_space), sendMessage NextLayout) --Rotate through avaliable layouts
+   , ((myModKey .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf) --Resets the layout to deafult
 
    ]
 
