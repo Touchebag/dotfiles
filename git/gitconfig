@@ -1,0 +1,11 @@
+[user]
+#  email = email@email.com
+  name = Touchebag
+[push]
+  default = simple
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+[filter "gitignore"]
+  clean = "sed '/#gitignore$/'d"
+  smudge = cat
