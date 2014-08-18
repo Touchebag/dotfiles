@@ -7,6 +7,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Fullscreen
+import XMonad.Layout.Grid
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders
 import XMonad.StackSet
@@ -93,7 +94,7 @@ winBorderFocused = "#ffffff"
 winBorderNormal = "#333333"
 
 myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose Tall (Choose (Mirror Tall) Full))) Window
-myLayoutHook = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
+myLayoutHook = avoidStruts $ smartBorders $ GridRatio (4/3) ||| Full
       where tiled = Tall 1 0.03 0.5
 
 myLogHook :: Handle -> X()
