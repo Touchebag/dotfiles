@@ -26,10 +26,10 @@ sh ~/.fehbg
 unclutter &
 
 #Autostart home network for convenience
-sudo netctl start zyxel &
+#sudo netctl start zyxel &
 
-#Autostart Firefox
-#firefox &
+#Setup time syncronization daemon
+sudo ntpd -u ntp:ntp
 
 #Start xserver
 exec xmonad
