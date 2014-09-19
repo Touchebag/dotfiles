@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Easy restarting after sleep
+sudo systemctl restart netctl-auto@wlp12s0.service
+
