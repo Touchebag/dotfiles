@@ -93,9 +93,8 @@ winBorderFocused, winBorderNormal :: String
 winBorderFocused = "#ffffff"
 winBorderNormal = "#333333"
 
-myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose Tall (Choose (Mirror Tall) Full))) Window
+--myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose GridRatio Full)) Window
 myLayoutHook = avoidStruts $ smartBorders $ GridRatio (4/3) ||| Full
-      where tiled = Tall 1 0.03 0.5
 
 myLogHook :: Handle -> X()
 myLogHook d = dynamicLogWithPP $ defaultPP
@@ -127,7 +126,10 @@ myKeyMaps conf = fromList $
    , ((myModKey, xK_t), withFocused $ windows . XMonad.StackSet.sink) --Push window back into tiling
    , ((myModKey, xK_equal), sendMessage Expand) --Selfexplanatory
    , ((myModKey, xK_minus), sendMessage Shrink) --See above
+
    , ((myModKey, xK_Return), windows swapMaster) --Swaps current and master windows
+   , ((myModKey .|. shiftMask, xK_j), windows swapUp) --Shifts window up in tiling
+   , ((myModKey .|. shiftMask, xK_k), windows swapDown) --Shifts window down in tiling
    , ((myModKey, xK_space), sendMessage NextLayout) --Rotate through avaliable layouts
    , ((myModKey .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf) --Resets the layout to deafult
 
