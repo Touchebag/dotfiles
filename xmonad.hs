@@ -5,6 +5,7 @@ import XMonad
 import XMonad.Actions.Navigation2D
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid
@@ -102,6 +103,9 @@ myLogHook d = dynamicLogWithPP $ defaultPP
     , ppCurrent = dzenColor "#000000" "#cccccc"
     , ppOrder = \(w:_:t:_) -> [w,t]
     }
+
+myStartupHook :: X()
+myStartupHook = setWMName "LG3Dj"
 -- }}}
 
 --{{{ Keymaps
@@ -169,6 +173,7 @@ main = do
       , layoutHook         = fullscreenFull $ lessBorders OnlyFloat myLayoutHook
       , logHook            = myLogHook d
       , handleEventHook    = fullscreenEventHook
+      , startupHook         = myStartupHook
       }
   where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -p" ++ barToString dzenConky
 
