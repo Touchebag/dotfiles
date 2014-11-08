@@ -19,14 +19,11 @@ xset r 66
 #Add directories to path
 export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH:$HOME/Desktop/
 
-#Background image
-sh ~/.fehbg
+#Random background image
+feh --randomize --bg-fill ~/wallpapers* &
 
 #Hide mouse cursor
 unclutter &
-
-#Autostart home network for convenience
-#sudo netctl start zyxel &
 
 #Setup time syncronization daemon
 sudo ntpd -u ntp:ntp
