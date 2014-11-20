@@ -142,18 +142,19 @@ myKeyMaps conf = fromList $
   ++
   -- Keys for switching workspaces
   [((myModKey, k), windows (XMonad.StackSet.greedyView i))
-    | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+    | (i, k) <- zip (XMonad.workspaces conf) symList
   ]
 
   ++
   -- Keys for shifting windows. Current workspace follows shifted window
   [((myModKey .|. shiftMask, k), windows (XMonad.StackSet.shift i) >> windows (XMonad.StackSet.greedyView i))
-    | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+    | (i, k) <- zip (XMonad.workspaces conf) symList
   ]
 
   ++
   -- Recompile Xmonad
   [((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")]
+    where symList = [ xK_exclam , xK_at , xK_numbersign , xK_dollar , xK_percent , xK_asciicircum , xK_ampersand , xK_asterisk , xK_parenleft , xK_parenright ]
 --}}}
 
 main :: IO()
