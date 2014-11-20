@@ -1,7 +1,7 @@
 # Change keymap to US with åäö
 # Caps Lock as backspace included
 xbindkeys &
-setxkbmap usaswe
+setxkbmap usaswe_numberswap
 
 # Set the font
 xset +fp /usr/share/fonts/local
