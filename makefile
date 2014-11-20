@@ -16,6 +16,7 @@ git:
 
 keylayout:
 	sudo ln -fsn $(here)/usaswe /usr/share/X11/xkb/symbols/usaswe
+	sudo ln -fsn $(here)/usaswe_numberswap /usr/share/X11/xkb/symbols/usaswe_numberswap
 
 openbox:
 	mkdir -p $(HOME)/.config/openbox
