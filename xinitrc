@@ -31,5 +31,8 @@ unclutter &
 # Setup time syncronization daemon
 sudo ntpd -u ntp:ntp
 
+# Autostart Firefox
+firefox &
+
 # Start xserver
 exec xmonad
