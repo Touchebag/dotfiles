@@ -3,6 +3,9 @@
 xbindkeys &
 setxkbmap usaswe_numberswap
 
+# Set menu key as compose
+setxkbmap -option compose:menu
+
 # Set the font
 xset +fp /usr/share/fonts/local
 xset fp rehash
