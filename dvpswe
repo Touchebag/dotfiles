@@ -1,0 +1,69 @@
+// Programmer Dvorak, by Roland Kaufmann <rlndkfmn at gmail dot com>
+// License: BSD, available at <http://www.kaufmann.no/roland/dvorak/license.html>
+// Main features: Numbers are in shift position (like French), symbols have been
+// placed in locations that give good hand-alternation and finger rolling with
+// symbols that usually follows, accented characters are possible for I18N.
+partial alphanumeric_keys
+xkb_symbols "dvp" {
+    include "us(dvorak)"
+    include "level3(ralt_switch)"
+    include "capslock(backspace)"
+
+    // Swedish alphabet
+    //              [ Unmodified  , Shift     , AltGr      , Shift + AltGr ]
+    // key <AC11> { [ apostrophe  , quotedbl  , adiaeresis , Adiaeresis    ] };
+    // key <AC10> { [ semicolon   , colon     , odiaeresis , Odiaeresis    ] };
+    // key <AD11> { [ bracketleft , braceleft , aring      , Aring         ] };
+
+    name[Group1] = "USA - Programmer Dvorak";
+
+    //             Unmodified       Shift           AltGr            Shift+AltGr
+    // symbols row, left side
+    key <TLDE> { [ dollar,          asciitilde                                  ] };
+    key <AE01> { [ ampersand,       percent                                     ] };
+    key <AE02> { [ bracketleft,     7                                           ] };
+    key <AE03> { [ braceleft,       5                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE04> { [ braceright,      3                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE05> { [ parenleft,       1                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE06> { [ equal,           9                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+
+    // symbols row, right side
+    key <AE07> { [ asterisk,        0                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE08> { [ parenright,      2                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE09> { [ plus,            4                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE10> { [ bracketright,    6                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE11> { [ exclam,          8                                           ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AE12> { [ numbersign,      grave                                       ] };
+    key <BKSP> { [ BackSpace                                                    ] };
+
+    // upper row, left side
+    key <AD01> { [ semicolon,       colon                                       ] };
+    key <AD02> { [ comma,           less                                        ] };
+    key <AD03> { [ period,          greater                                     ] };
+    key <AD04> { [ p,               P                                           ] };
+    key <AD05> { [ y,               Y                                           ] };
+
+    // upper row, right side
+    key <AD08> { [ c,               C                                           ] };
+    key <AD09> { [ r,               R                                           ] };
+    key <AD11> { [ slash,           question                                    ] };
+    key <AD12> { [ at,              asciicircum                                 ] };
+
+    // home row, left side
+    key <AC01> { [ a,               A,              aring,           Aring      ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AC02> { [ o,               O,              odiaeresis ,     Odiaeresis ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AC03> { [ e,               E,              adiaeresis ,     Adiaeresis ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AC04> { [ u,               U                                           ] };
+
+    // home row, right side
+    key <AC06> { [ d,               D                                           ] };
+    key <AC07> { [ h,               H                                           ] };
+    key <AC08> { [ t,               T                                           ] };
+    key <AC09> { [ n,               N                                           ] };
+    key <AC10> { [ s,               S                                           ] };
+    key <AC11> { [ minus,           underscore                                  ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <BKSL> { [ backslash,       bar                                         ] };
+
+    // lower row, left side
+    key <AB01> { [ apostrophe,      quotedbl                                    ] };
+};
