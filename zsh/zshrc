@@ -40,6 +40,7 @@ alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gs='git status'
 
+# Displays vi mode in prompt
 function zle-line-init zle-keymap-select {
     PROMPT="[%2~] ${${KEYMAP/vicmd/--NORMAL--}/(main|viins)/--INSERT--}
  >> "
