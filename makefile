@@ -15,9 +15,9 @@ git:
 	ln -fsn $(here)/git/gitignore $(HOME)/.gitignore
 
 keylayout:
-	sudo ln -fsn $(here)/usaswe /usr/share/X11/xkb/symbols/usaswe
-	sudo ln -fsn $(here)/usaswe_numberswap /usr/share/X11/xkb/symbols/usaswe_numberswap
-	sudo ln -fsn $(here)/dvpswe /usr/share/X11/xkb/symbols/dvpswe
+	sudo ln -fsn $(here)/keylayouts/usaswe /usr/share/X11/xkb/symbols/usaswe
+	sudo ln -fsn $(here)/keylayouts/usaswe_numberswap /usr/share/X11/xkb/symbols/usaswe_numberswap
+	sudo ln -fsn $(here)/keylayouts/dvpswe /usr/share/X11/xkb/symbols/dvpswe
 
 openbox:
 	mkdir -p $(HOME)/.config/openbox
