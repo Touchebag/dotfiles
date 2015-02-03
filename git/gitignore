@@ -1,1 +1,20 @@
-*.swp
+# Vim swap files
+**/*.swp
+
+# C/C++
+*.exe
+*.out
+obj/*
+
+# Latex
+**/*.aux
+**/*.log
+**/*.pdf
+
+# Archive files
+**/*.zip
+**/*.rar
+**/*.tar
+**/*.tar.gz
+**/*.tar.gz2
+**/*.7z
