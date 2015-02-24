@@ -51,15 +51,15 @@
 #  control + b:2
 
 #lower volume
-"amixer set Master 4dB-"
+"pactl set-sink-volume 0 -2%"
    XF86AudioLowerVolume
 
 #Raise volume
-"amixer set Master 4dB+"
+"pactl set-sink-volume 0 +2%"
    XF86AudioRaiseVolume
 
 #Toggle mute
-"amixer sset Master toggle"
+"pactl set-sink-mute 0 toggle"
    XF86AudioMute
 
 #"xterm -geom 50x20+20+20"
