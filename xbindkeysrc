@@ -51,11 +51,11 @@
 #  control + b:2
 
 #lower volume
-"pactl set-sink-volume 0 -2%"
+"pactl set-sink-volume 0 -5%"
    XF86AudioLowerVolume
 
 #Raise volume
-"pactl set-sink-volume 0 +2%"
+"pactl set-sink-volume 0 +5%"
    XF86AudioRaiseVolume
 
 #Toggle mute
