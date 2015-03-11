@@ -37,6 +37,9 @@ slim:
 xbindkeys:
 	ln -fsn $(here)/xbindkeysrc $(HOME)/.xbindkeysrc
 
+xcompose:
+	ln -fsn $(here)/xcompose $(HOME)/.XCompose
+
 xinitrc:
 	ln -fsn $(here)/xinitrc $(HOME)/.xinitrc
 
@@ -48,4 +51,4 @@ zsh:
 	ln -fsn $(here)/zsh/zprofile $(HOME)/.zprofile
 	ln -fsn $(here)/zsh/zshrc $(HOME)/.zshrc
 
-.PHONY: bash git keylayout openbox scripts slim xbindkeys xinitrc xmonad zsh
+.PHONY: bash git keylayout openbox scripts slim xbindkeys xcompose xinitrc xmonad zsh
