@@ -85,6 +85,7 @@ myManageHook = composeAll
   , className =? "Wine"    --> doShift "4"
   , className =? "Steam"   --> doShift "4"
   , className =? "Gimp"    --> doShift "4"
+  , className =? "Krita"   --> doShift "4"
 
   , className =? "Wine"    --> doFloat
   , className =? "feh"     --> doFloat
