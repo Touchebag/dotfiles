@@ -80,15 +80,18 @@ myBorderWidth = 1
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-  [ className =? "Skype"   --> doShift "3"
-  , className =? "Firefox" --> doShift "1"
-  , className =? "Wine"    --> doShift "4"
-  , className =? "Steam"   --> doShift "4"
-  , className =? "Gimp"    --> doShift "4"
-  , className =? "Krita"   --> doShift "4"
+  [ className =? "Skype"       --> doShift "3"
+  , className =? "Firefox"     --> doShift "1"
+  , className =? "Wine"        --> doShift "4"
+  , className =? "Steam"       --> doShift "4"
+  , className =? "Gimp"        --> doShift "4"
+  , className =? "Krita"       --> doShift "4"
+  , className =? "Battle.net"  --> doShift "4"
+  , className =? "Hearthstone" --> doShift "4"
 
-  , className =? "Wine"    --> doFloat
-  , className =? "feh"     --> doFloat
+  , className =? "Wine"        --> doFloat
+  , className =? "feh"         --> doFloat
+  , className =? "Hearthstone" --> doFloat
   ]
 
 -- Border colour of windows
