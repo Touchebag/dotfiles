@@ -4,7 +4,7 @@ help:
 	@echo "Select a target"
 	@make -rpn | sed -n -e '/^$$/ { n ; /^[^ ]*:/p }' | egrep -v '^.PHONY' | egrep -v '^all'
 
-all: git keylayout scripts slim xbindkeys xinitrc xmonad zsh
+all: git keylayout scripts slim xbindkeys xcompose xinitrc xmonad zsh
 
 bash:
 	ln -fsn $(here)/bash/bash_profile $(HOME)/.bash_profile
