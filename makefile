@@ -47,6 +47,9 @@ xmonad:
 	mkdir -p $(HOME)/.xmonad
 	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
+xresources:
+	ln -fsn $(here)/Xresources $(HOME)/.Xresources
+
 zsh:
 	ln -fsn $(here)/zsh/zprofile $(HOME)/.zprofile
 	ln -fsn $(here)/zsh/zshrc $(HOME)/.zshrc
