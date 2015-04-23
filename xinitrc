@@ -31,6 +31,9 @@ export EDITOR=vim
 # Hide mouse cursor
 unclutter &
 
+# Load Xresources
+xrdb ~/.Xresources
+
 # Setup time syncronization daemon
 sudo ntpd -u ntp:ntp
 
