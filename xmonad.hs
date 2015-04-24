@@ -54,15 +54,15 @@ dzenConfig = Bar
 -- Custom config for the Conky bar
 dzenConky :: Bar
 dzenConky = dzenConfig
-  { barWidth  = 616
-  , barX      = 600
+  { barWidth  = 550
+  , barX      = 748
   , barAlign  = "r"
   }
 
 -- Custom config for the main bar
 dzenLogHook :: Bar
 dzenLogHook = dzenConfig
-  { barWidth  = 616
+  { barWidth  = 748
   , barX      = 0
   , barAlign  = "l"
   }
