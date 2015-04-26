@@ -150,6 +150,9 @@ myKeyMaps conf = fromList $
   -- Manual brightness controls (Yes, I know it looks like crap)
   , ((0, 0x1008ff02), spawn "sudo awk '{print $0 + 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")
   , ((0, 0x1008ff03), spawn "sudo awk '{print $0 - 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")
+
+  -- Touchpad toggle
+  , ((0, 0x1008ffa9), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
   ]
 
   ++
