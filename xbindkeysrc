@@ -51,16 +51,16 @@
 #  control + b:2
 
 #lower volume
-"pactl set-sink-volume @DEFAULT_SINK@ -5%"
-   XF86AudioLowerVolume
+# "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+#    XF86AudioLowerVolume
 
 #Raise volume
-"pactl set-sink-volume @DEFAULT_SINK@ +5%"
-   XF86AudioRaiseVolume
+# "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+#    XF86AudioRaiseVolume
 
 #Toggle mute
-"pactl set-sink-mute @DEFAULT_SINK@ toggle"
-   XF86AudioMute
+# "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+#    XF86AudioMute
 
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
