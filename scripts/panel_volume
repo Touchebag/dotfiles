@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Current system volume
-VOL=`amixer get Master | awk 'FNR == 5 {print $4}' | tr -d '[]%'`
+VOL=`amixer get Master | awk 'FNR == 6 {print $4}' | tr -d '[]%'`
 # Current mute status
-MUTE=`amixer get Master | awk 'FNR == 5 {print $6}' | tr -d '[]'`
+MUTE=`amixer get Master | awk 'FNR == 6 {print $6}' | tr -d '[]'`
 
 # Deafult icon
 icon="^i(/home/robin/scripts/icons/vol_100.xbm)"
