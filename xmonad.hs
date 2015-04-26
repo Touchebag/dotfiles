@@ -146,6 +146,10 @@ myKeyMaps conf = fromList $
   , ((0, 0x1008ff12), spawn "amixer set Master toggle")
   , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
   , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
+
+  -- Manual brightness controls (Yes, I know it looks like crap)
+  , ((0, 0x1008ff02), spawn "sudo awk '{print $0 + 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")
+  , ((0, 0x1008ff03), spawn "sudo awk '{print $0 - 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")
   ]
 
   ++
