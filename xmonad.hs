@@ -142,6 +142,10 @@ myKeyMaps conf = fromList $
   , ((myModKey, xK_space), sendMessage NextLayout) --Rotate through avaliable layouts
   , ((myModKey .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf) --Resets the layout to deafult
 
+  -- Audio controls
+  , ((0, 0x1008ff12), spawn "amixer set Master toggle")
+  , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
+  , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
   ]
 
   ++
