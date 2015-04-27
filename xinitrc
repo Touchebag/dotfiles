@@ -37,6 +37,9 @@ xrdb ~/.Xresources
 # Setup time syncronization daemon
 sudo ntpd -u ntp:ntp
 
+# Turn off touchpad
+synclient TouchpadOff=1
+
 # Autostart Firefox
 firefox &
 
