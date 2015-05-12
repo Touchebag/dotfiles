@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Current system volume
-VOL=`amixer get Master | awk 'FNR == 6 {print $4}' | tr -d '[]%'`
+VOL=`amixer get Master | awk 'FNR == 6 {print $5}' | tr -d '[]%'`
 # Current mute status
 MUTE=`amixer get Master | awk 'FNR == 6 {print $6}' | tr -d '[]'`
 
 if [[ $VOL = "" ]]; then
-  VOL=`amixer get Master | awk 'FNR == 5 {print $4}' | tr -d '[]%'`
+  VOL=`amixer get Master | awk 'FNR == 5 {print $5}' | tr -d '[]%'`
   MUTE=`amixer get Master | awk 'FNR == 5 {print $6}' | tr -d '[]'`
 fi
 
