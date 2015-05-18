@@ -171,7 +171,9 @@ myKeyMaps conf = fromList $
   -- Recompile Xmonad
   [((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")]
     -- US layout
-    where symList = [ xK_exclam , xK_at , xK_numbersign , xK_dollar , xK_percent , xK_asciicircum , xK_ampersand , xK_asterisk , xK_parenleft , xK_parenright ]
+    where symList = [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
+    -- US layout numberswap
+    -- where symList = [ xK_exclam , xK_at , xK_numbersign , xK_dollar , xK_percent , xK_asciicircum , xK_ampersand , xK_asterisk , xK_parenleft , xK_parenright ]
     -- Dvorak layout
     -- where symList = [ xK_ampersand , xK_bracketleft , xK_braceleft , xK_braceright , xK_parenleft , xK_equal , xK_asterisk , xK_parenright , xK_plus , xK_braceright ]
 --}}}
