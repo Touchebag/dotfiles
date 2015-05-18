@@ -10,24 +10,11 @@ xkb_symbols "euro" {
     // Swedish alphabet
     //           [ Unmodified  , Shift     , AltGr      , Shift + AltGr ]
     key <AC01> { [ a           , A         , aring      , Aring         ] };
-    key <AC02> { [ s           , S         , odiaeresis , Odiaeresis    ] };
-    key <AC03> { [ d           , D         , adiaeresis , Adiaeresis    ] };
+    key <AD03> { [ e           , E         , adiaeresis , Adiaeresis    ] };
+    key <AD09> { [ o           , O         , odiaeresis , Odiaeresis    ] };
     // key <AC11> { [ apostrophe  , quotedbl  , adiaeresis , Adiaeresis    ] };
     // key <AC10> { [ semicolon   , colon     , odiaeresis , Odiaeresis    ] };
     // key <AD11> { [ bracketleft , braceleft , aring      , Aring         ] };
-
-    // Swap numbers and symbols
-
-    key <AE01> { [ exclam      , 1 ] };
-    key <AE02> { [ at          , 2 ] };
-    key <AE03> { [ numbersign  , 3 ] };
-    key <AE04> { [ dollar      , 4 ] };
-    key <AE05> { [ percent     , 5 ] };
-    key <AE06> { [ asciicircum , 6 ] };
-    key <AE07> { [ ampersand   , 7 ] };
-    key <AE08> { [ asterisk    , 8 ] };
-    key <AE09> { [ parenleft   , 9 ] };
-    key <AE10> { [ parenright  , 0 ] };
 
 };
 

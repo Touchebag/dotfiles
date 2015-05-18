@@ -1,7 +1,7 @@
 # Change keymap to US with åäö
 # Caps Lock as backspace included
 xbindkeys &
-setxkbmap usaswe
+setxkbmap usaswe_defaultnumbers
 
 # Set menu key as compose
 setxkbmap -option compose:menu
