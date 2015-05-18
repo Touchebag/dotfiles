@@ -16,7 +16,7 @@ git:
 
 keylayout:
 	sudo ln -fsn $(here)/keylayouts/usaswe /usr/share/X11/xkb/symbols/usaswe
-	sudo ln -fsn $(here)/keylayouts/usaswe_numberswap /usr/share/X11/xkb/symbols/usaswe_numberswap
+	sudo ln -fsn $(here)/keylayouts/usaswe_defaultnumbers /usr/share/X11/xkb/symbols/usaswe_defaultnumbers
 	sudo ln -fsn $(here)/keylayouts/dvpswe /usr/share/X11/xkb/symbols/dvpswe
 
 openbox:
