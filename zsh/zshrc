@@ -14,6 +14,12 @@ setopt HIST_IGNORE_DUPS
 autoload -Uz compinit
 compinit
 
+# Vim auto-completion rules
+zstyle ':completion:*:*:vim:*' \
+ignored-patterns '*.aux' '*.log' '*.pdf' '*.hi' '*.o'
+
+# Aliases {{{
+
 # Feel good alias for sudo
 alias fucking='sudo'
 
@@ -39,6 +45,8 @@ alias gpl='git pull'
 alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gs='git status'
+
+#}}}
 
 # Displays vi mode in prompt
 function zle-line-init zle-keymap-select {
