@@ -181,7 +181,7 @@ myKeyMaps conf = fromList $
 main :: IO()
 main = do
   spawn "panel_trayer"
-  d <- spawnPipe $ "dzen2 -p" ++ barToString dzenLogHook
+  d <- spawnPipe $ "dzen2 -e 'button2=;' -p" ++ barToString dzenLogHook
   spawn conkyCmd
   xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
       { terminal           = myTerminal
@@ -197,5 +197,5 @@ main = do
       , handleEventHook    = fullscreenEventHook
       , startupHook         = myStartupHook
       }
-  where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -p" ++ barToString dzenConky
+  where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -e 'button2=;' -p" ++ barToString dzenConky
 
