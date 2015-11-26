@@ -99,7 +99,7 @@ winBorderFocused, winBorderNormal :: String
 winBorderFocused = "#ffffff"
 winBorderNormal = "#333333"
 
---myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose GridRatio Full)) Window
+myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose Grid Full)) Window
 myLayoutHook = avoidStruts $ smartBorders $ GridRatio (4/3) ||| Full
 
 myLogHook :: Handle -> X()
