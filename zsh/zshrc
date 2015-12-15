@@ -14,6 +14,9 @@ setopt HIST_IGNORE_DUPS
 autoload -Uz compinit
 compinit
 
+# Glob magic
+setopt extendedglob
+
 # Vim auto-completion rules
 zstyle ':completion:*:*:vim:*' \
 ignored-patterns '*.aux' '*.log' '*.pdf' '*.hi' '*.o'
