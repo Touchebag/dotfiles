@@ -19,8 +19,8 @@ input_fgcolor           #000000
 # panel location
 input_panel_x           0%
 input_panel_y           0%
-input_name_x            590
-input_name_y            460
+input_name_x            877
+input_name_y            490
 # force single input box (gdm style)
 input_pass_x            -1
 input_pass_y            -1
