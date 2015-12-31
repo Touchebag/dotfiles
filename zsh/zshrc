@@ -19,7 +19,8 @@ setopt extendedglob
 
 # Vim auto-completion rules
 zstyle ':completion:*:*:vim:*' \
-ignored-patterns '*.aux' '*.log' '*.pdf' '*.hi' '*.o' '*.dyn_hi' '*.dyn_o'
+ignored-patterns '*.aux' '*.log' '*.pdf' '*.fdb_latexmk' '*.fls' \
+  '*.hi' '*.o' '*.dyn_hi' '*.dyn_o'
 
 # Aliases {{{
 
