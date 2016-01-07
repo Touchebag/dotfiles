@@ -20,6 +20,7 @@ setopt extendedglob
 # Vim auto-completion rules
 zstyle ':completion:*:*:vim:*' \
 ignored-patterns '*.aux' '*.log' '*.pdf' '*.fdb_latexmk' '*.fls' \
+  '*.bcf' '*.blg' '*.run.xml' \
   '*.hi' '*.o' '*.dyn_hi' '*.dyn_o'
 
 # Aliases {{{
@@ -51,6 +52,9 @@ alias grc='git rebase --continue'
 alias gs='git status'
 
 #}}}
+
+# For 'fuck' script to work
+eval $(thefuck --alias)
 
 # Displays vi mode in prompt
 function zle-line-init zle-keymap-select {
