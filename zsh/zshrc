@@ -60,6 +60,10 @@ eval $(thefuck --alias)
 function zle-line-init zle-keymap-select {
     PROMPT="[%2~] ${${KEYMAP/vicmd/--NORMAL--}/(main|viins)/--INSERT--}
  >> "
+    case $KEYMAP in
+      vicmd) echo -e -n "\x1b[\x32 q" ;;
+      main|viins) echo -e -n "\x1b[\x36 q" ;;
+    esac
     zle reset-prompt
 }
 zle -N zle-line-init
