@@ -19,7 +19,7 @@ setopt extendedglob
 
 # Vim auto-completion rules
 zstyle ':completion:*:*:vim:*' \
-ignored-patterns '*.aux' '*.log' '*.pdf' '*.fdb_latexmk' '*.fls' \
+ignored-patterns '*.aux' '*.log' '*.pdf' '*.fdb_latexmk' '*.fls' '*.toc'\
   '*.bcf' '*.blg' '*.run.xml' '*.bbl' \
   '*.hi' '*.o' '*.dyn_hi' '*.dyn_o'
 
@@ -68,4 +68,10 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+# Automatically run ls after cd
+function chpwd() {
+  emulate -L zsh
+  ls -A
+}
 
