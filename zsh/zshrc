@@ -58,8 +58,10 @@ eval $(thefuck --alias)
 
 # Displays vi mode in prompt
 function zle-line-init zle-keymap-select {
-    PROMPT="[%2~] ${${KEYMAP/vicmd/--NORMAL--}/(main|viins)/--INSERT--}
- >> "
+    text1=$'[%{\e[38;5;040m%}%2~%{\e[0m%}]'
+    vimode="${${KEYMAP/vicmd/ --NORMAL--}/(main|viins)/ --INSERT--}"
+    text2=$'\n%{\e[38;5;014m%}  >> %{\e[0m%}'
+    PROMPT=$text1$vimode$text2
     case $KEYMAP in
       vicmd) echo -e -n "\x1b[\x32 q" ;;
       main|viins) echo -e -n "\x1b[\x36 q" ;;
