@@ -96,7 +96,7 @@ myManageHook = composeAll
 
 -- Border colour of windows
 winBorderFocused, winBorderNormal :: String
-winBorderFocused = "#ffffff"
+winBorderFocused = "#00ff00"
 winBorderNormal = "#333333"
 
 myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose Grid Full)) Window
