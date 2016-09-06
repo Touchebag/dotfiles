@@ -35,6 +35,7 @@ alias ll='ls -lA'
 
 # Ease of use
 alias cd..='cd ..'
+alias u='cd ..'
 alias y='yaourt'
 
 # Git
@@ -77,3 +78,10 @@ function chpwd() {
   ls -A
 }
 
+# Autocomplete from history with Up/Down keys
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+# Preserve history between sessions
+setopt inc_append_history
+setopt share_history
