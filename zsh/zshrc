@@ -7,8 +7,17 @@
 # Vim mode
 set -o vi
 
-# Avoid successive duplicate commands in history
+# Hstory options
 setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
+
+# Persistent history
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000
+SAVEHIST=$HISTSIZE
 
 # Completion magic
 autoload -Uz compinit
@@ -83,6 +92,3 @@ function chpwd() {
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-# Preserve history between sessions
-setopt inc_append_history
-setopt share_history
