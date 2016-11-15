@@ -68,12 +68,29 @@ alias gs='git status'
 # For 'fuck' script to work
 eval $(thefuck --alias)
 
+autoload -Uz vcs_info
+setopt prompt_subst
+precmd () {
+vcs_info
+zstyle ':vcs_info:git*' formats "%b"
+STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
+if [[ -n ${vcs_info_msg_0_} ]]; then
+  if [[ -n $STATUS ]]; then
+    gitbranch=' (%F{red}${vcs_info_msg_0_}%F{white})'
+    else
+    gitbranch=' (%F{green}${vcs_info_msg_0_}%F{white})'
+  fi
+else
+  gitbranch=''
+fi
+}
+
 # Displays vi mode in prompt
 function zle-line-init zle-keymap-select {
     text1=$'[%{\e[38;5;040m%}%2~%{\e[0m%}]'
     vimode="${${KEYMAP/vicmd/ --NORMAL--}/(main|viins)/ --INSERT--}"
     text2=$'\n%{\e[38;5;014m%}  >> %{\e[0m%}'
-    PROMPT=$text1$vimode$text2
+    PROMPT=$text1$gitbranch$vimode$text2
     case $KEYMAP in
       vicmd) echo -e -n "\x1b[\x32 q" ;;
       main|viins) echo -e -n "\x1b[\x36 q" ;;
