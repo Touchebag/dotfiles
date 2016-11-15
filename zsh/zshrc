@@ -68,6 +68,8 @@ alias gs='git status'
 # For 'fuck' script to work
 eval $(thefuck --alias)
 
+# Shows current git branch in prompt
+# Green when unchanged, red when there are unstaged changes
 autoload -Uz vcs_info
 setopt prompt_subst
 precmd () {
@@ -76,9 +78,9 @@ zstyle ':vcs_info:git*' formats "%b"
 STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
 if [[ -n ${vcs_info_msg_0_} ]]; then
   if [[ -n $STATUS ]]; then
-    gitbranch=' (%F{red}${vcs_info_msg_0_}%F{white})'
+    gitbranch=$' (%F{red}${vcs_info_msg_0_}%{\e[0m%})'
     else
-    gitbranch=' (%F{green}${vcs_info_msg_0_}%F{white})'
+    gitbranch=$' (%F{green}${vcs_info_msg_0_}%{\e[0m%})'
   fi
 else
   gitbranch=''
