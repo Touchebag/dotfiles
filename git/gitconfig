@@ -13,3 +13,7 @@
   # Do not commit lines ending in #gitignore (e.g. debug lines)
   clean = "sed '/#gitignore$/'d"
   smudge = cat
+[color]
+	ui = auto
+[gitreview]
+	remote = origin
