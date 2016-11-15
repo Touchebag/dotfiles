@@ -78,9 +78,9 @@ zstyle ':vcs_info:git*' formats "%b"
 STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
 if [[ -n ${vcs_info_msg_0_} ]]; then
   if [[ -n $STATUS ]]; then
-    gitbranch=$' (%F{red}${vcs_info_msg_0_}%{\e[0m%})'
+    gitbranch=$' (%{\e[31m%}${vcs_info_msg_0_}%{\e[0m%})'
     else
-    gitbranch=$' (%F{green}${vcs_info_msg_0_}%{\e[0m%})'
+    gitbranch=$' (%{\e[32m%}${vcs_info_msg_0_}%{\e[0m%})'
   fi
 else
   gitbranch=''
