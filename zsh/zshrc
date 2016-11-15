@@ -60,6 +60,7 @@ alias gph='git push'
 alias gpl='git pull'
 alias gr='git rebase'
 alias grc='git rebase --continue'
+alias gre='git-review'
 alias gs='git status'
 
 #}}}
