@@ -41,10 +41,10 @@ barToString bar =  " -fn " ++ barFont bar
 -- Default dzen config
 dzenConfig :: Bar
 dzenConfig = Bar
-  { barFont   = "'-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*'"
+  { barFont   = "'-*-fixed-*-*-*-*-48-*-*-*-*-*-*-*'"
   , barFg     = "'#c5c8c6'"
   , barBg     = "'#232c31'"
-  , barHeight = 18
+  , barHeight = 52
   , barWidth  = 1216
   , barX      = 0
   , barY      = 0
@@ -54,15 +54,17 @@ dzenConfig = Bar
 -- Custom config for the Conky bar
 dzenConky :: Bar
 dzenConky = dzenConfig
-  { barWidth  = 550
-  , barX      = 748
+  { barFont   = "'-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*'"
+  , barHeight = 18
+  , barWidth  = 1920
+  , barX      = 3840
   , barAlign  = "r"
   }
 
 -- Custom config for the main bar
 dzenLogHook :: Bar
 dzenLogHook = dzenConfig
-  { barWidth  = 748
+  { barWidth  = 3840
   , barX      = 0
   , barAlign  = "l"
   }
@@ -70,13 +72,13 @@ dzenLogHook = dzenConfig
 
 --{{{ Xmonad stuff
 myTerminal :: String
-myTerminal = "xterm"
+myTerminal = "gnome-terminal"
 
 myModKey :: KeyMask
 myModKey = mod4Mask
 
 myBorderWidth :: Dimension
-myBorderWidth = 1
+myBorderWidth = 4
 
 myManageHook :: ManageHook
 myManageHook = composeAll
@@ -157,13 +159,13 @@ myKeyMaps conf = fromList $
 
   ++
   -- Keys for switching workspaces
-  [((myModKey, k), windows (XMonad.StackSet.greedyView i))
+  [((myModKey, k), windows (XMonad.StackSet.view i))
     | (i, k) <- zip (XMonad.workspaces conf) symList
   ]
 
   ++
   -- Keys for shifting windows. Current workspace follows shifted window
-  [((myModKey .|. shiftMask, k), windows (XMonad.StackSet.shift i) >> windows (XMonad.StackSet.greedyView i))
+  [((myModKey .|. shiftMask, k), windows (XMonad.StackSet.shift i) >> windows (XMonad.StackSet.view i))
     | (i, k) <- zip (XMonad.workspaces conf) symList
   ]
 
@@ -180,7 +182,8 @@ myKeyMaps conf = fromList $
 
 main :: IO()
 main = do
-  spawn "panel_trayer"
+  spawn "~/scripts/panel_trayer"
+  spawn "kbopts"
   d <- spawnPipe $ "dzen2 -e 'button2=;' -p" ++ barToString dzenLogHook
   spawn conkyCmd
   xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig

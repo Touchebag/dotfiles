@@ -10,7 +10,8 @@ TEXT
 ^fg() ${execi 1 ~/scripts/panel_wifi}\
 ^fg() MEM ${memperc}% \
 ^fg() ${execi 1 ~/scripts/panel_cpu} \
-^fg() CPU ${cpu cpu0}% ${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% \
-^fg() ${execi 1 ~/scripts/panel_volume} \
-^fg() ${execi 1 ~/scripts/panel_battery} \
-^fg() ^i(/home/robin/scripts/icons/clock.xbm) ${time %H:%M}
+^fg() CPU ${cpu cpu0}% ${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}% ${cpu cpu5}% ${cpu cpu6}% ${cpu cpu7}% \
+# ^fg() ${execi 1 ~/scripts/panel_volume} \
+# ^fg() ${execi 1 ~/scripts/panel_battery} \
+# ^fg() ^i(/home/robin/scripts/icons/clock.xbm) ${time %H:%M}
+^fg() TIME ${time %H:%M}

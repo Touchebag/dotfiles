@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Current connection strength
-QUA=`iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
+QUA=`iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
 # Max connection strength
-MAX=`iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
+MAX=`iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
 
 # Calculate percentage strength
 PERC=`echo $QUA*100/$MAX | bc`

@@ -4,4 +4,5 @@
 killall trayer
 
 # Start trayer
-trayer --edge top --align right --height 18 --width 5 --transparent true --alpha 0 --tint 0x232c31 --SetDockType true --SetPartialStrut true &
+trayer --edge top --align left --height 52 --width 0 --transparent true --alpha 0 --tint 0x232c31 --SetDockType true --SetPartialStrut true &
+trayer --edge top --align right --height 18 --width 0 --transparent true --alpha 0 --tint 0x232c31 --SetDockType true --SetPartialStrut true &
