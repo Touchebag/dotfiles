@@ -3,7 +3,7 @@
 # Temperature of each CPU core
 # CPU1=`sensors | awk 'FNR == 3 {print $3}' | tr -d '.+°C'`
 # CPU2=`sensors | awk 'FNR == 4 {print $3}' | tr -d '.+°C'`
-temp=`sensors | awk 'FNR == 3 {print $2}'`
+temp=`sensors | awk 'FNR == 17 {print $2}'`
 temp=${temp:1:2}
 
 # Set the icon and deafult colour
