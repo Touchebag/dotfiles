@@ -4,12 +4,12 @@ dir=${PWD##*/}
 
 if [[ ${dir} == "build" ]]
 then
-  read -r -p "Deleting everything in ${PWD}. Are you sure? [y/N] " input
+  read -r -n 1 -p "Deleting everything in ${PWD}. Are you sure? [y/N] " input
   if [[ "${input}" =~ [yY] ]]
   then
-    echo "Cleaning build directory"
+    printf "\nCleaning build directory"
     rm -rf ./*
   fi
 else
-  echo "Not in build directory, exiting"
+  printf "Not in build directory, exiting"
 fi
