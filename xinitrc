@@ -41,6 +41,9 @@ sudo ntpd -u ntp:ntp
 xdotool mousemove 2000 0
 synclient TouchpadOff=1
 
+# Because auto-connect won't work
+endor &
+
 # Autostart Firefox
 firefox &
 
