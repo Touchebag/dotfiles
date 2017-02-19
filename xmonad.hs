@@ -194,8 +194,8 @@ main = do
       , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
       , layoutHook         = fullscreenFull $ lessBorders OnlyFloat myLayoutHook
       , logHook            = myLogHook d
-      , handleEventHook    = fullscreenEventHook
-      , startupHook         = myStartupHook
+      , handleEventHook    = docksEventHook
+      , startupHook        = myStartupHook
       }
   where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -e 'button2=;' -p" ++ barToString dzenConky
 
