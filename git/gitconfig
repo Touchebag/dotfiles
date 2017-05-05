@@ -16,5 +16,7 @@
   smudge = cat
 [color]
 	ui = auto
+[diff]
+	wsErrorHighlight = all
 [gitreview]
 	remote = origin
