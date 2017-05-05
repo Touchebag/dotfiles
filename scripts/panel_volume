@@ -18,7 +18,7 @@ fullcolor="^fg(#cc6666)"
 emptycolor="^fg(#425059)"
 
 # Show bar depending on volume
-bar=""
+bar="ERROR"
 case $VOL in
 	100)
 		bar="---------"
@@ -53,7 +53,7 @@ case $VOL in
 	8*)
 		bar="--------$emptycolor-"
 		;;
-	*)
+	9*)
 		bar="---------"
 		;;
 esac
