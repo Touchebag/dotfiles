@@ -11,7 +11,7 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders
-import XMonad.StackSet
+import XMonad.StackSet hiding (workspaces)
 import XMonad.Util.Run
 
 -- {{{ Bar stuff
@@ -111,6 +111,9 @@ myLogHook d = dynamicLogWithPP $ defaultPP
 
 myStartupHook :: X()
 myStartupHook = setWMName "LG3Dj"
+
+myWorkspaces :: [WorkspaceId]
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 -- }}}
 
 --{{{ Keymaps
@@ -191,6 +194,7 @@ main = do
       , modMask            = myModKey
       , keys               = myKeyMaps
       , borderWidth        = myBorderWidth
+      , workspaces         = myWorkspaces
       , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
       , layoutHook         = fullscreenFull $ lessBorders OnlyFloat myLayoutHook
       , logHook            = myLogHook d
