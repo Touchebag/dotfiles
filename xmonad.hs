@@ -170,6 +170,13 @@ myKeyMaps conf = fromList $
   ]
 
   ++
+  -- Keys for switching monitors
+  [((myModKey, k), screenWorkspace sc >>= flip whenJust (windows . f))
+    | (k, sc) <- zip [xK_i, xK_o] [0..]
+    , (f, m) <- [(view, 0)]
+  ]
+
+  ++
   -- Recompile Xmonad
   [((myModKey, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")]
     -- US layout
