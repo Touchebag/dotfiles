@@ -122,7 +122,6 @@ myKeyMaps conf = fromList $
   -- Program shortcuts
   [ ((myModKey, xK_r), spawn "dmenu_run")
   , ((myModKey, xK_f), safeSpawnProg myTerminal)
-  , ((myModKey, xK_e), safeSpawnProg "firefox")
 
   -- Movement keys
   , ((myModKey, xK_h), windowGo L False)
