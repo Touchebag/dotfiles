@@ -70,7 +70,7 @@ dzenLogHook = dzenConfig
 
 --{{{ Xmonad stuff
 myTerminal :: String
-myTerminal = "xterm"
+myTerminal = "urxvt"
 
 myModKey :: KeyMask
 myModKey = mod4Mask

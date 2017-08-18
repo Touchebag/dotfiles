@@ -4,7 +4,7 @@ help:
 	@echo "Select a target"
 	@make -rpn | sed -n -e '/^$$/ { n ; /^[^ ]*:/p }' | egrep -v '^.PHONY' | egrep -v '^all'
 
-all: git keylayout scripts slim xbindkeys xcompose xinitrc xmonad zsh
+all: git keylayout scripts slim xbindkeys xcompose xdefaults xinitrc xmonad zsh
 
 bash:
 	ln -fsn $(here)/bash/bash_profile $(HOME)/.bash_profile
@@ -41,6 +41,9 @@ xbindkeys:
 xcompose:
 	ln -fsn $(here)/xcompose $(HOME)/.XCompose
 
+xdefaults:
+	ln -fsn $(here)/Xdefaults $(HOME)/.Xdefaults
+
 xinitrc:
 	ln -fsn $(here)/xinitrc $(HOME)/.xinitrc
 
@@ -55,4 +58,4 @@ zsh:
 	ln -fsn $(here)/zsh/zprofile $(HOME)/.zprofile
 	ln -fsn $(here)/zsh/zshrc $(HOME)/.zshrc
 
-.PHONY: bash git keylayout openbox scripts slim xbindkeys xcompose xinitrc xmonad zsh
+.PHONY: bash git keylayout openbox scripts slim xbindkeys xcompose xdefaults xinitrc xmonad zsh
