@@ -87,12 +87,23 @@ else
 fi
 }
 
+# Prints exit code of last command only if not 0
+function check_last_exit_code() {
+  local LAST_EXIT_CODE=$?
+  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+    local EXIT_CODE_PROMPT=' '
+    EXIT_CODE_PROMPT+="-$LAST_EXIT_CODE-"
+    echo "$EXIT_CODE_PROMPT"
+  fi
+}
+
 # Displays vi mode in prompt
 function zle-line-init zle-keymap-select {
     text1=$'[%{\e[38;5;040m%}%2~%{\e[0m%}]'
     vimode="${${KEYMAP/vicmd/ --NORMAL--}/(main|viins)/ --INSERT--}"
     text2=$'\n%{\e[38;5;014m%}  >> %{\e[0m%}'
     PROMPT=$text1$gitbranch$vimode$text2
+    RPROMPT='$(check_last_exit_code)'
     case $KEYMAP in
       vicmd) echo -e -n "\x1b[\x32 q" ;;
       main|viins) echo -e -n "\x1b[\x36 q" ;;
