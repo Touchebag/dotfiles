@@ -99,7 +99,7 @@ function check_last_exit_code() {
 
 # Displays vi mode in prompt
 function zle-line-init zle-keymap-select {
-    text1=$'[%{\e[38;5;040m%}%2~%{\e[0m%}]'
+    text1=$'[%{\e[38;5;040m%}%3~%{\e[0m%}]'
     vimode="${${KEYMAP/vicmd/ --NORMAL--}/(main|viins)/ --INSERT--}"
     text2=$'\n%{\e[38;5;014m%}  >> %{\e[0m%}'
     PROMPT=$text1$gitbranch$vimode$text2
