@@ -25,6 +25,9 @@ export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH:$HOME/Desktop/
 # Make vim default editor
 export EDITOR=vim
 
+# Auto mounting external drives
+udiskie -F -N &
+
 # Set initial background before cron job takes over
 ~/scripts/background &
 
