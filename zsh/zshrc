@@ -16,7 +16,7 @@ setopt HIST_REDUCE_BLANKS
 
 # Persistent history
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000
+HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
 # Completion magic
