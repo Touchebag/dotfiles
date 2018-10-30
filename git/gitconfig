@@ -20,3 +20,5 @@
 	wsErrorHighlight = all
 [gitreview]
 	remote = origin
+[log]
+	date = iso
