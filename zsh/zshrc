@@ -103,9 +103,9 @@ function check_last_exit_code() {
 function zle-line-init zle-keymap-select {
     text1=$'[%{\e[38;5;040m%}%3~%{\e[0m%}]'
     vimode="${${KEYMAP/vicmd/ --NORMAL--}/(main|viins)/ --INSERT--}"
-    text2=$'\n%{\e[38;5;014m%}  >> %{\e[0m%}'
+    text2=$'\n%{\e[38;5;014m%}$(check_last_exit_code)  >> %{\e[0m%}'
     PROMPT=$text1$gitbranch$vimode$text2
-    RPROMPT='$(check_last_exit_code)'
+    RPROMPT='%*'
     case $KEYMAP in
       vicmd) echo -e -n "\x1b[\x32 q" ;;
       main|viins) echo -e -n "\x1b[\x36 q" ;;
