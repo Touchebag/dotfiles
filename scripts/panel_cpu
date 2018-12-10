@@ -7,15 +7,13 @@ temp=${temp:1:2}
 icon="^i(/home/robin/scripts/icons/temp.xbm)"
 color="^fg()"
 
-# Calculate the average temperature of both cores
-
 # Change colour depending on temperature
-if (($temp >= 80)); then
-   color="^fg(#cc0000)"
-elif (($temp >= 70)); then
-   color="^fg(#aa5500)"
-elif (($temp >= 60)); then
-   color="^fg(#aaaa00)"
+if [[ $temp -ge 80 ]]; then
+    color="^fg(#cc0000)"
+elif [[ $temp -ge 70 ]]; then
+    color="^fg(#aa5500)"
+elif [[ $temp -ge 60 ]]; then
+    color="^fg(#aaaa00)"
 fi
 
 # Output
