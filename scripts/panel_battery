@@ -5,6 +5,8 @@ BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
 # Current charging status of battery
 STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
+default_color="^fg(#cccccc)"
+
 # Change the icon depending on percentage
 icon=""
 if [[ $BAT -lt 10 ]]; then
@@ -54,4 +56,4 @@ case $BAT in
 esac
 
 # Output
-echo "$icon $bar%"
+echo "$icon $bar%$default_color"

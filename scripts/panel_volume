@@ -17,6 +17,8 @@ icon="^i(/home/robin/scripts/icons/vol_100.xbm)"
 fullcolor="^fg(#cc6666)"
 emptycolor="^fg(#425059)"
 
+default_color="^fg(#cccccc)"
+
 # Show bar depending on volume
 bar="ERROR"
 case $VOL in
@@ -75,4 +77,4 @@ else
 fi
 
 # Output
-echo "$icon $fullcolor$bar"
+echo "$icon $fullcolor$bar$default_color"
