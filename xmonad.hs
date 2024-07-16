@@ -102,12 +102,12 @@ winBorderNormal = "#333333"
 myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose Grid Full)) Window
 myLayoutHook = avoidStruts $ smartBorders $ GridRatio (4/3) ||| Full
 
-myLogHook :: Handle -> X()
-myLogHook d = dynamicLogWithPP $ defaultPP
-    { ppOutput = hPutStrLn d
-    , ppCurrent = dzenColor "#000000" "#cccccc"
-    , ppOrder = \(w:_:t:_) -> [w,t]
-    }
+-- myLogHook :: Handle -> X()
+-- myLogHook d = dynamicLogWithPP $ defaultPP
+--     { ppOutput = hPutStrLn d
+--     , ppCurrent = dzenColor "#000000" "#cccccc"
+--     , ppOrder = \(w:_:t:_) -> [w,t]
+--     }
 
 myStartupHook :: X()
 myStartupHook = setWMName "LG3Dj"
@@ -192,7 +192,7 @@ main = do
   spawn "panel_trayer"
   d <- spawnPipe $ "dzen2 -e 'button2=;' -p" ++ barToString dzenLogHook
   spawn conkyCmd
-  xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
+  xmonad $ withUrgencyHook NoUrgencyHook $ docks $ def
       { terminal           = myTerminal
       , focusFollowsMouse  = False
       , focusedBorderColor = winBorderFocused
@@ -203,8 +203,7 @@ main = do
       , workspaces         = myWorkspaces
       , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
       , layoutHook         = lessBorders OnlyScreenFloat myLayoutHook
-      , logHook            = myLogHook d
-      , handleEventHook    = docksEventHook
+      -- , logHook            = myLogHook d
       , startupHook        = myStartupHook
       }
   where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -e 'button2=;' -p" ++ barToString dzenConky
