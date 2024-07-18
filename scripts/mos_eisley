@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Laziness script for network
-sudo netctl stop mos_eisley
-
-sudo netctl start mos_eisley
-sudo netctl switch-to mos_eisley
