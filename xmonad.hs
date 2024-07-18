@@ -126,7 +126,7 @@ myKeyMaps conf = fromList $
   , ((0, 0x1008ff03), spawn "sudo awk '{print $0 - 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")
 
   -- Touchpad toggle. Also moves cursor out of the way
-  , ((0, 0x1008ffa9), spawn "xdotool mousemove 2000 0; synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
+  , ((0, XF86XK_TouchpadToggle), spawn "~/toggle_touchpad.sh")
   ]
 
   ++

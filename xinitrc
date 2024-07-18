@@ -25,27 +25,13 @@ export PATH=$HOME/scripts:$HOME/bin:$HOME/.cabal/bin:$PATH:$HOME/Desktop/
 # Make vim default editor
 export EDITOR=vim
 
-# Auto mounting external drives
-udiskie -F -N &
-
-# Set initial background before cron job takes over
-~/scripts/background &
-
-# Hide mouse cursor
-unclutter &
-
 # Load Xresources
 xrdb ~/.Xresources
 
-# Setup time syncronization daemon
-sudo ntpd -u ntp:ntp
-
-# Move cursor and turn off touchpad
+# Move cursor out of the way
 xdotool mousemove 2000 0
-synclient TouchpadOff=1
-
-# Because auto-connect won't work
-endor &
+# Hide mouse cursor
+unclutter &
 
 # Autostart Firefox
 firefox &
