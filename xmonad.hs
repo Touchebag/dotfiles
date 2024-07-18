@@ -4,6 +4,8 @@ import System.IO
 import XMonad
 import XMonad.Actions.Navigation2D
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
@@ -13,59 +15,36 @@ import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders
 import XMonad.StackSet hiding (workspaces)
 import XMonad.Util.Run
+import XMonad.Util.Loggers
 
 -- {{{ Bar stuff
--- Data structure to make handling dzen config easier
-data Bar = Bar
-  { barFont   :: String
-  , barFg     :: String
-  , barBg     :: String
-  , barHeight :: Int
-  , barWidth  :: Int
-  , barX      :: Int
-  , barY      :: Int
-  , barAlign  :: String
-  }
 
--- Outputs a string with the format of the Bar
-barToString :: Bar -> String
-barToString bar =  " -fn " ++ barFont bar
-                ++ " -fg " ++ barFg bar
-                ++ " -bg " ++ barBg bar
-                ++ " -h "  ++ show (barHeight bar)
-                ++ " -w "  ++ show (barWidth bar)
-                ++ " -x "  ++ show (barX bar)
-                ++ " -y "  ++ show (barY bar)
-                ++ " -ta " ++ barAlign bar
+myXmobarPP :: PP
+myXmobarPP = def
+    { ppSep             = magenta " • "
+    , ppTitleSanitize   = xmobarStrip
+    , ppCurrent         = wrap (cyan "[") (cyan "]")
+    , ppHidden          = grey
+    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
+    , ppOrder           = \[ws, _, window, _] -> [ws, window]
+    , ppExtras          = [logTitles formatFocused formatUnfocused]
+    }
+  where
+    formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
+    formatUnfocused = wrap (grey "[") (grey "]") . blue . ppWindow
 
--- Default dzen config
-dzenConfig :: Bar
-dzenConfig = Bar
-  { barFont   = "'-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*'"
-  , barFg     = "'#c5c8c6'"
-  , barBg     = "'#232c31'"
-  , barHeight = 18
-  , barWidth  = 1216
-  , barX      = 0
-  , barY      = 0
-  , barAlign  = "c"
-  }
+    -- Windows should have *some* title, which should not not exceed a sane length.
+    ppWindow :: String -> String
+    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
 
--- Custom config for the Conky bar
-dzenConky :: Bar
-dzenConky = dzenConfig
-  { barWidth  = 550
-  , barX      = 748
-  , barAlign  = "r"
-  }
-
--- Custom config for the main bar
-dzenLogHook :: Bar
-dzenLogHook = dzenConfig
-  { barWidth  = 748
-  , barX      = 0
-  , barAlign  = "l"
-  }
+    blue, grey, magenta, red, white, yellow :: String -> String
+    magenta  = xmobarColor "#ff00ff" ""
+    blue     = xmobarColor "#0000ff" ""
+    cyan     = xmobarColor "#00ffff" ""
+    white    = xmobarColor "#ffffff" ""
+    yellow   = xmobarColor "#ffff00" ""
+    red      = xmobarColor "#ff0000" ""
+    grey     = xmobarColor "#999999" ""
 -- }}}
 
 --{{{ Xmonad stuff
@@ -178,33 +157,26 @@ myKeyMaps conf = fromList $
 
   ++
   -- Recompile Xmonad
-  [((myModKey .|. shiftMask, xK_p), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")]
-    -- US layout
+  [((myModKey .|. shiftMask, xK_p), spawn "if type xmonad; then pkill xmobar || xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")]
     where symList = [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
-    -- US layout numberswap
-    -- where symList = [ xK_exclam , xK_at , xK_numbersign , xK_dollar , xK_percent , xK_asciicircum , xK_ampersand , xK_asterisk , xK_parenleft , xK_parenright ]
-    -- Dvorak layout
-    -- where symList = [ xK_ampersand , xK_bracketleft , xK_braceleft , xK_braceright , xK_parenleft , xK_equal , xK_asterisk , xK_parenright , xK_plus , xK_braceright ]
 --}}}
 
-main :: IO()
-main = do
-  spawn "panel_trayer"
-  d <- spawnPipe $ "dzen2 -e 'button2=;' -p" ++ barToString dzenLogHook
-  spawn conkyCmd
-  xmonad $ withUrgencyHook NoUrgencyHook $ docks $ def
-      { terminal           = myTerminal
-      , focusFollowsMouse  = False
-      , focusedBorderColor = winBorderFocused
-      , normalBorderColor  = winBorderNormal
-      , modMask            = myModKey
-      , keys               = myKeyMaps
-      , borderWidth        = myBorderWidth
-      , workspaces         = myWorkspaces
-      , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
-      , layoutHook         = lessBorders OnlyScreenFloat myLayoutHook
-      -- , logHook            = myLogHook d
-      , startupHook        = myStartupHook
-      }
-  where conkyCmd = "conky -c ~/scripts/panel_conky | dzen2 -e 'button2=;' -p" ++ barToString dzenConky
+myConfig = def
+  { terminal           = myTerminal
+  , focusFollowsMouse  = False
+  , focusedBorderColor = winBorderFocused
+  , normalBorderColor  = winBorderNormal
+  , modMask            = myModKey
+  , keys               = myKeyMaps
+  , borderWidth        = myBorderWidth
+  , workspaces         = myWorkspaces
+  , manageHook         = fullscreenManageHook <+> manageDocks <+> myManageHook
+  , layoutHook         = lessBorders OnlyScreenFloat myLayoutHook
+  , startupHook        = myStartupHook
+  }
 
+main :: IO()
+-- main = do
+main = xmonad
+        . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+        $ myConfig

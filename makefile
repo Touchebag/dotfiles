@@ -51,6 +51,9 @@ xmonad:
 	mkdir -p $(HOME)/.xmonad
 	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 
+xmobar:
+	ln -fsn $(here)/xmobarrc $(HOME)/.xmobarrc
+
 xresources:
 	ln -fsn $(here)/Xresources $(HOME)/.Xresources
 
