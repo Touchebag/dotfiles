@@ -3,6 +3,7 @@ import System.IO
 
 import XMonad
 import XMonad.Actions.Navigation2D
+import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
@@ -18,7 +19,6 @@ import XMonad.Util.Run
 import XMonad.Util.Loggers
 
 -- {{{ Bar stuff
-
 myXmobarPP :: PP
 myXmobarPP = def
     { ppSep             = magenta " • "
@@ -81,13 +81,6 @@ winBorderNormal = "#333333"
 myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose Grid Full)) Window
 myLayoutHook = avoidStruts $ smartBorders $ GridRatio (4/3) ||| Full
 
--- myLogHook :: Handle -> X()
--- myLogHook d = dynamicLogWithPP $ defaultPP
---     { ppOutput = hPutStrLn d
---     , ppCurrent = dzenColor "#000000" "#cccccc"
---     , ppOrder = \(w:_:t:_) -> [w,t]
---     }
-
 myStartupHook :: X()
 myStartupHook = setWMName "LG3Dj"
 
@@ -124,9 +117,9 @@ myKeyMaps conf = fromList $
   , ((myModKey .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf) --Resets the layout to deafult
 
   -- Audio controls
-  , ((0, 0x1008ff12), spawn "amixer set Master toggle")
-  , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
-  , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
+  , ((0, XF8AudioMute        , mutevolume 3)
+  , ((0, XF8AudioLowerVolumelowervolume , lowervolume 3)
+  , ((0, XF8AudioRaiseVolume , raisevolume 3)
 
   -- Manual brightness controls (Yes, I know it looks like crap)
   , ((0, 0x1008ff02), spawn "sudo awk '{print $0 + 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")

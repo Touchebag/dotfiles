@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%XMonadLog% }{ %multicpu% | %coretemp% | %memory% | %dynnetwork% | %battery% | %date%"
+   , template = "%XMonadLog% }{ %multicpu% | %multicoretemp% | %memory% | %dynnetwork% | %default:Master% | %battery% | %date%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -35,7 +35,7 @@ Config {
                              ] 10
 
         -- cpu activity
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+        , Run MultiCpu       [ "--template" , "Cpu: <total>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "#00ff00"
@@ -44,7 +44,7 @@ Config {
                              ] 10
 
         -- cpu core temperature
-        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+        , Run MultiCoreTemp  [ "--template" , "Temp: <avg>°C"
                              , "--Low"      , "70"        -- units: °C
                              , "--High"     , "80"        -- units: °C
                              , "--low"      , "#00ff00"
@@ -53,13 +53,15 @@ Config {
                              ] 50
 
         -- memory usage
-        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
+        , Run Memory         [ "--template" , "Mem: <usedratio>%"
                              , "--Low"      , "40"        -- units: %
                              , "--High"     , "90"        -- units: %
                              , "--low"      , "#00ff00"
                              , "--normal"   , "#ff8800"
                              , "--high"     , "#ff0000"
                              ] 10
+
+        , Run Volume         "default" "Master" [] 10
 
         -- battery
         , Run Battery        [ "--template" , "Batt: <acstatus>"
