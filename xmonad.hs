@@ -1,6 +1,8 @@
 import Data.Map (Map, fromList)
 import System.IO
 
+import Graphics.X11.ExtraTypes.XF86
+
 import XMonad
 import XMonad.Actions.Navigation2D
 import XMonad.Actions.Volume
@@ -117,16 +119,16 @@ myKeyMaps conf = fromList $
   , ((myModKey .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf) --Resets the layout to deafult
 
   -- Audio controls
-  , ((0, XF8AudioMute        , mutevolume 3)
-  , ((0, XF8AudioLowerVolumelowervolume , lowervolume 3)
-  , ((0, XF8AudioRaiseVolume , raisevolume 3)
+  , ((0, xF86XK_AudioMute)        , toggleMute    >> return ())
+  , ((0, xF86XK_AudioLowerVolume) , lowerVolume 3 >> return ())
+  , ((0, xF86XK_AudioRaiseVolume) , raiseVolume 3 >> return ())
 
   -- Manual brightness controls (Yes, I know it looks like crap)
   , ((0, 0x1008ff02), spawn "sudo awk '{print $0 + 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")
   , ((0, 0x1008ff03), spawn "sudo awk '{print $0 - 500}' /sys/class/backlight/intel_backlight/brightness | sudo tee /sys/class/backlight/intel_backlight/brightness")
 
   -- Touchpad toggle. Also moves cursor out of the way
-  , ((0, XF86XK_TouchpadToggle), spawn "~/toggle_touchpad.sh")
+  , ((0, xF86XK_TouchpadToggle), spawn "~/toggle_touchpad.sh")
   ]
 
   ++
