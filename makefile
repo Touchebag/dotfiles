@@ -48,6 +48,8 @@ xmonad:
 	ln -fsn $(here)/xmonad/xstartup $(HOME)/.xmonad/xmonad-session-rc
 	ln -fsn $(here)/xmonad/Xresources $(HOME)/.Xresources
 	ln -fsn $(here)/xmonad/xmobarrc $(HOME)/.xmobarrc
+	sudo ln -fsn ${here}/xorg/conf/extensions.conf /etc/X11/xorg.conf.d/10-extensions.conf
+	sudo ln -fsn ${here}/xorg/conf/serverflags.conf /etc/X11/xorg.conf.d/10-serverflags.conf
 
 zsh:
 	ln -fsn $(here)/zsh/zprofile $(HOME)/.zprofile
