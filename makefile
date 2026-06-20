@@ -4,7 +4,7 @@ help:
 	@echo "Select a target"
 	@make -rpn | sed -n -e '/^$$/ { n ; /^[^ ]*:/p }' | egrep -v '^.PHONY' | egrep -v '^all'
 
-all: git keylayout scripts xbindkeys xcompose xdefaults xsession xmonad zsh
+all: git keylayout scripts xorg xmonad zsh
 
 bash:
 	ln -fsn $(here)/bash/bash_profile $(HOME)/.bash_profile
@@ -35,32 +35,22 @@ slim:
 	sudo ln -fsn $(here)/slim/slim.conf /etc/slim.conf
 	sudo ln -fsn $(here)/slim/slimlock.conf /etc/slimlock.conf
 
-xbindkeys:
-	ln -fsn $(here)/xbindkeysrc $(HOME)/.xbindkeysrc
-
-xcompose:
-	ln -fsn $(here)/xcompose $(HOME)/.XCompose
-
-xdefaults:
-	ln -fsn $(here)/Xdefaults $(HOME)/.Xdefaults
-
-xsession:
-	ln -fsn $(here)/xsession $(HOME)/.xsession
+xorg:
+	ln -fsn $(here)/xorg/xbindkeysrc $(HOME)/.xbindkeysrc
+	ln -fsn $(here)/xorg/xcompose $(HOME)/.XCompose
+	ln -fsn $(here)/xorg/Xdefaults $(HOME)/.Xdefaults
+	ln -fsn $(here)/xorg/xsession $(HOME)/.xsession
 
 xmonad:
 	mkdir -p $(HOME)/.xmonad
-	ln -fsn $(here)/xmonad.hs $(HOME)/.xmonad/xmonad.hs
+	ln -fsn $(here)/xmonad/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 	mkdir -p $(HOME)/.xmonad/hooks
-	ln -fsn $(here)/xstartup $(HOME)/.xmonad/xmonad-session-rc
-
-xmobar:
-	ln -fsn $(here)/xmobarrc $(HOME)/.xmobarrc
-
-xresources:
-	ln -fsn $(here)/Xresources $(HOME)/.Xresources
+	ln -fsn $(here)/xmonad/xstartup $(HOME)/.xmonad/xmonad-session-rc
+	ln -fsn $(here)/xmonad/Xresources $(HOME)/.Xresources
+	ln -fsn $(here)/xmonad/xmobarrc $(HOME)/.xmobarrc
 
 zsh:
 	ln -fsn $(here)/zsh/zprofile $(HOME)/.zprofile
 	ln -fsn $(here)/zsh/zshrc $(HOME)/.zshrc
 
-.PHONY: bash git keylayout openbox scripts slim xbindkeys xcompose xdefaults xsession xmonad zsh
+.PHONY: bash git keylayout openbox scripts slim xorg xmonad zsh
