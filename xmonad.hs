@@ -10,7 +10,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.SetWMName
+import XMonad.Hooks.Script
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid
@@ -84,7 +84,7 @@ myLayoutHook :: ModifiedLayout AvoidStruts (ModifiedLayout SmartBorder (Choose G
 myLayoutHook = avoidStruts $ smartBorders $ GridRatio (4/3) ||| Full
 
 myStartupHook :: X()
-myStartupHook = setWMName "LG3Dj"
+myStartupHook = execScriptHook "startup"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
@@ -96,6 +96,7 @@ myKeyMaps conf = fromList $
   -- Program shortcuts
   [ ((myModKey, xK_r), spawn "dmenu_run")
   , ((myModKey, xK_f), safeSpawnProg myTerminal)
+  , ((myModKey, xK_e), spawn "firefox")
 
   -- Movement keys
   , ((myModKey, xK_h), windowGo L False)
